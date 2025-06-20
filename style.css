@@ -1,0 +1,225 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Cabeçalho */
+header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  border-bottom: 2px solid #ffcc00;
+}
+
+.logo {
+  height: 60px;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #cc9900;
+}
+
+/* Hero Section */
+.hero,
+.banner-principal {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.hero img,
+.img-principal {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero button,
+.botao-banner {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.hero button:hover,
+.botao-banner:hover {
+  background-color: white;
+  color: #cc9900;
+}
+
+/* Features */
+.features {
+  display: flex;
+  justify-content: space-around;
+  background-color: #eee;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.feature {
+  max-width: 300px;
+  margin: 20px;
+}
+
+.feature i {
+  font-size: 2.5rem;
+  color: #cc9900;
+  margin-bottom: 15px;
+}
+
+/* Valores */
+.valores {
+  background-image: url('img/img-valores.png');
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  color: white;
+  text-align: center;
+}
+
+.valores h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.valores p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Quadros de serviços */
+.quadros-wrapper h1{
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 40px;
+}
+.quadros {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px auto;
+  flex-wrap: wrap;
+}
+
+.quadro {
+  position: relative;
+  width: 200px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  border: 0.1px solid #c3c3c3;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quadro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(204, 153, 0, 0); /* transparente inicialmente */
+  transition: background-color 0.4s ease-in-out;
+  z-index: 1;
+}
+
+.quadro:hover::before {
+  background-color: rgba(204, 153, 0, 0.85); /* amarelo escuro */
+}
+
+.quadro h2 {
+  position: relative;
+  z-index: 2;
+  transition: color 0.4s ease-in-out;
+}
+
+.quadro:hover h2 {
+  color: white;
+}
+
+.quadro-banner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 8px 0;
+  text-align: center;
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.quadro:hover .quadro-banner {
+  color: white;
+  background-color: transparent;
+  transform: translateY(-140%);
+}
+
+/* Rodapé */
+footer {
+  margin-top: 60px;
+}
+
+.footer-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-yellow-light {
+  background-color: #fff8cc;
+  color: #333;
+}
+
+.footer-yellow-dark {
+  background-color: #cc9900;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.footer-white {
+  background-color: white;
+}
+
+.img-eletroge-rodape {
+  height: 60px;
+  margin: 10px auto;
+}
