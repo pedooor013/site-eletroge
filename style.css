@@ -11,14 +11,14 @@ body {
   color: #333;
 }
 
-/* Cabeçalho */
+/* Cabeçalho com gradiente corrigido */
 header {
-  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(to right, #ffffff, #ff9900);
   padding: 15px 30px;
-  border-bottom: 2px solid #ffcc00;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -28,13 +28,13 @@ header {
 nav a {
   margin-left: 20px;
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   font-weight: bold;
   transition: color 0.3s;
 }
 
 nav a:hover {
-  color: #cc9900;
+  color: #FF8C00;
 }
 
 /* Hero Section */
@@ -222,4 +222,118 @@ footer {
 .img-eletroge-rodape {
   height: 60px;
   margin: 10px auto;
+}
+
+/* Estilo para os quadros */
+.quadros-wrapper {
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+}
+
+.quadros-wrapper h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 40px;
+  color: #333;
+}
+
+.grade-quadros {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.quadro {
+  position: relative;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Fundo laranja translúcido ao passar o mouse */
+.quadro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 153, 0, 0);
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+.quadro:hover::before {
+  background-color: rgba(255, 153, 0, 0.7);
+}
+
+/* Título fixo na parte de baixo, sobe no hover */
+.quadro-banner {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #ff9900;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.quadro:hover .quadro-banner {
+  bottom: 50%;
+  transform: translateY(50%);
+  background-color: transparent;
+}
+
+/* Texto menor aparece no hover, abaixo do título */
+.quadro-hover-text {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 0.85rem;
+  text-align: center;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+  padding: 0 10px;
+}
+
+.quadro:hover .quadro-hover-text {
+  opacity: 1;
+}
+.banner-topo {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.img-banner-topo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.texto-banner-topo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 2;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.texto-banner-topo h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
 }
