@@ -36,7 +36,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #FF8C00;
+  color: #333;
 }
 
 /* Hero Section */
@@ -341,3 +341,39 @@ footer {
   font-size: 2.8rem;
   font-weight: bold;
 }
+.obras-andamento {
+  background-color: #eee;
+  color: #333;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.obras-andamento h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.obras-andamento p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.botao-andamento {
+  background-color: transparent;
+  color: #cc9900;
+  border: 2px solid #cc9900;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.botao-andamento:hover {
+  background-color: #cc9900;
+  color: white;
+}
+
