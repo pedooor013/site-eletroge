@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EletroGe</title>
+  <link rel="stylesheet" href="../public/style.css" />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #ffffff, #ff9900);
+      padding: 15px 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo {
+      height: 60px;
+      cursor: pointer;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: #333;
+    }
+
+    /* Ajuste para o container hero */
+    .hero {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    .hero img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Texto centralizado sobre a imagem */
+    .hero .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      pointer-events: none; /* Para não interferir em cliques */
+    }
+
+    /* Botão transparente */
+    .hero button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: transparent;
+      border: 2px solid white;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .hero button:hover {
+      background-color: white;
+      color: #ff9900;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a href="index.html">
+    <img src="../public/img/logo-eletroge.png" alt="Logo EletroGe" class="logo" />
+  </a>
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Início</a>
+    <a href="servicos-eletroge.html"><i class="fas fa-tools"></i> Serviços</a>
+    <a href="#"><i class="fas fa-envelope"></i> Contato</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <img src="../public/img/img-principal.jpg" alt="Imagem principal" />
+  <div class="hero-text">Bem-vindo ao Grupo EletroGe</div>
+  <button>Saiba Mais</button>
+</div>
+
+<section class="features">
+  <div class="feature">
+    <i class="fas fa-bolt"></i>
+    <h2>Energia</h2>
+    <p>
+      Oferecemos soluções modernas em energia elétrica para residências e
+      empresas com eficiência e segurança.
+    </p>
+  </div>
+  <div class="feature">
+    <i class="fas fa-tools"></i>
+    <h2>Manutenção</h2>
+    <p>
+      Serviços especializados de manutenção elétrica preventiva e corretiva
+      para todos os tipos de instalações.
+    </p>
+  </div>
+  <div class="feature">
+    <i class="fas fa-lightbulb"></i>
+    <h2>Inovação</h2>
+    <p>
+      Investimos constantemente em novas tecnologias para garantir os melhores
+      resultados aos nossos clientes.
+    </p>
+  </div>
+</section>
+
+<section class="valores">
+  <h1>Valores da EletroGe</h1>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in
+    ligula nec eros convallis dapibus. Nullam sodales facilisis orci, at
+    suscipit arcu tristique eu. In sed eros sapien. Praesent fringilla at urna
+    nec hendrerit. Integer tristique leo nec erat dignissim, sed viverra justo
+    tristique. Curabitur sit amet eros facilisis, finibus massa in, volutpat
+    erat.
+  </p>
+</section>
+<section class="obras-andamento">
+  <h1>Obras em Andamento</h1>
+  <p>Acompanhe nossos projetos em execução e veja como estamos levando energia de qualidade a mais clientes todos os dias.</p>
+  <button class="botao-andamento">Ver Projetos</button>
+</section>
+
+
+<footer>
+  <div class="footer-section footer-yellow-light">
+    <div>Email: contato@eletroge.com</div>
+    <div>WhatsApp: (11) 91234-5678</div>
+    <div>Telefone: (11) 1234-5678</div>
+  </div>
+  <div class="footer-section footer-yellow-dark">
+    <strong>Entre em contato conosco a qualquer momento!</strong>
+  </div>
+  <div class="footer-section footer-white">
+    <img
+            src="../public/img/logo-eletroge.png"
+            alt="Logo EletroGe"
+            class="img-eletroge-rodape"
+    />
+  </div>
+</footer>
+</body>
+</html>
