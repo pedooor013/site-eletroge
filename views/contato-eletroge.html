@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato - EletroGe</title>
+  <link rel="stylesheet" href="../public/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #ffffff, #ff9900);
+      padding: 15px 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo {
+      height: 60px;
+      cursor: pointer;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: #333;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff9900;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #ff9900;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+
+    button {
+      width: 150px;
+      align-self: center;
+      background-color: transparent;
+      border: 2px solid #ff9900;
+      color: #ff9900;
+      font-weight: bold;
+      padding: 12px 0;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff9900;
+      color: white;
+    }
+
+    /* Rodapé */
+footer {
+  margin-top: 60px;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="../public/img/logo-eletroge.png" alt="Logo EletroGe" class="logo" />
+    </a>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Início</a>
+      <a href="servicos-eletroge.html"><i class="fas fa-tools"></i> Serviços</a>
+      <a href="contato.html"><i class="fas fa-envelope"></i> Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contato</h1>
+    <form action="#" method="POST">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+
+   <footer>
+    <div class="footer-section footer-yellow-light">
+      <div>Email: contato@eletroge.com</div>
+      <div>WhatsApp: (11) 91234-5678</div>
+      <div>Telefone: (11) 1234-5678</div>
+    </div>
+    <div class="footer-section footer-yellow-dark">
+      <strong>Entre em contato conosco a qualquer momento!</strong>
+    </div>
+    <div class="footer-section footer-white">
+      <img
+        src="../public/img/logo-eletroge.png"
+        alt="Logo EletroGe"
+        class="img-eletroge-rodape"
+      />
+    </div>
+  </footer>
+</body>
+</html>
+    
