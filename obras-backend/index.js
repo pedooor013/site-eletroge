@@ -5,7 +5,7 @@ const app = express();
 const conexao = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Limonadacomcanjica1507!',
+    password: '',
     database: 'eletrogeDB'
 });
 
