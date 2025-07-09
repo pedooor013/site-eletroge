@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Nós - EletroGe</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    /* Ajuste do cabeçalho */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #ffffff, #ff9900);
+      padding: 15px 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: #333;
+    }
+
+    /* Hero da página */
+    .sobre-hero {
+      width: 100%;
+      max-height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sobre-hero img {
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+      display: block;
+    }
+
+    .sobre-hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2.8rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    /* Seção principal */
+    .sobre-nos {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    .sobre-nos h1 {
+      text-align: center;
+      color: #cc9900;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .sobre-nos p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    /* Fundadores */
+    .fundadores {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .fundadores img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .fundadores p {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #444;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <a href="index.html">
+      <img src="../img/logo-eletroge.png" alt="Logo EletroGe" class="logo" />
+    </a>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Início</a>
+      <a href="servicos-eletroge.html"><i class="fas fa-tools"></i> Serviços</a>
+      <a href="#"><i class="fas fa-envelope"></i> Contato</a>
+    </nav>
+  </header>
+
+  <!-- Hero visual -->
+  <div class="sobre-hero">
+    <img src="../img/img-principal.jpg" alt="Equipe EletroGe trabalhando" />
+    <div class="sobre-hero-text">Quem Somos</div>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <main class="sobre-nos">
+    <h1>Sobre o Grupo EletroGe</h1>
+    <p>
+      A <strong>EletroGe</strong> nasceu da vontade de oferecer soluções elétricas seguras, modernas e acessíveis. Com mais de 10 anos de mercado, temos orgulho em dizer que participamos da construção de lares, comércios e indústrias com energia, qualidade e ética.
+    </p>
+    <p>
+      Atuamos com foco no cliente, buscando sempre entender suas reais necessidades. Nossa equipe técnica é treinada e atualizada com as melhores práticas do setor, garantindo agilidade, segurança e economia.
+    </p>
+    <p>
+      Para nós, cada projeto é uma oportunidade de transformar energia em progresso, com respeito ao meio ambiente e à sociedade.
+    </p>
+
+    <!-- Seção dos Fundadores -->
+    <div class="fundadores">
+      <img src="public/img/fundadores.jpg" alt="Fundadores da EletroGe" />
+      <p>
+        <strong>Pedro Lopes</strong> e <strong>Guilherme Silva</strong>, fundadores da EletroGe, compartilham uma paixão em comum: transformar energia em confiança. Juntos, constroem uma empresa que une técnica, responsabilidade e proximidade com o cliente. Mais do que eletricistas, são empreendedores que acreditam no poder da energia bem aplicada para mover pessoas e sonhos.
+      </p>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="footer-section footer-yellow-light">
+      <div>Email: contato@eletroge.com</div>
+      <div>WhatsApp: (11) 91234-5678</div>
+      <div>Telefone: (11) 1234-5678</div>
+    </div>
+    <div class="footer-section footer-yellow-dark">
+      <strong>Entre em contato conosco a qualquer momento!</strong>
+    </div>
+    <div class="footer-section footer-white">
+      <img src="../img/logo-eletroge.png" alt="Logo EletroGe" class="img-eletroge-rodape" />
+    </div>
+  </footer>
+</body>
+</html>
