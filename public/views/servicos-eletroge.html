@@ -81,7 +81,6 @@
       color: white;
       font-size: 1.2rem;
       font-weight: bold;
-      cursor: pointer;
       overflow: hidden;
       transition: all 0.4s ease-in-out;
     }
@@ -90,13 +89,13 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-color: rgba(204, 153, 0, 0);
+      background-color: rgba(204, 153, 8, 0);
       transition: background-color 0.4s ease-in-out;
       z-index: 1;
     }
 
     .quadro:hover::before {
-      background-color: rgba(211, 179, 78, 0.7);
+      background-color: rgba(204, 153, 8, 0.7);
     }
 
     .quadro h2 {
@@ -161,9 +160,12 @@
         <div class="quadro-banner">A segurança que a sua industria precisa</div>
       </div>
       <div class="quadro" style="background-image: url('../img/instalcao-spda.jpeg');">
-        <a href="obras-industriais.html">
           <h2>SPDA</h2>
           <div class="quadro-banner">Segurança para edificações e vidas</div>
+      </div>
+      <div class="btn-wrapper-quadros">
+        <a href="obras-model.html">
+          <button class="botao-andamento" style="width: 500px;">Veja Nossas Obras Realizadas</button>
         </a>
       </div>
     </div>

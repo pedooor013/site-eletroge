@@ -146,7 +146,6 @@ nav a:hover {
   color: black;
   font-size: 1.2rem;
   font-weight: bold;
-  cursor: pointer;
   overflow: hidden;
   transition: all 0.4s ease-in-out;
   border: 0.1px solid #c3c3c3;
@@ -254,7 +253,6 @@ footer {
   background-position: center;
   border-radius: 6px;
   overflow: hidden;
-  cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
@@ -263,13 +261,13 @@ footer {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(211, 179, 78, 0);
+  background-color: rgba(204, 153, 8, 0); /* transparente inicialmente */
   transition: background-color 0.3s ease;
   z-index: 1;
 }
 
 .quadro:hover::before {
-  background-color: rgba(211, 179, 78, 0.7);
+  background-color: rgba(204, 153, 8, 0.7);
 }
 
 /* Título fixo na parte de baixo, sobe no hover */
@@ -277,7 +275,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #ffc270;
+  background-color: #cc9900;
   color: white;
   text-align: center;
   padding: 10px 0;
