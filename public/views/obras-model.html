@@ -21,16 +21,28 @@
     <a href="#"><i class="fas fa-envelope"></i> Contato</a>
   </nav>
 </header>
-<section class="banner-topo">
-  <img src="../img/img-principal.jpg" alt="Banner de topo" class="img-banner-topo" />
-  <div class="texto-banner-topo">
-    <h1><strong>Conheça as Nossas Principais Obras</strong></h1>
-  </div>
-</section>
-
-
 <section class="quadros-wrapper">
-  <h1>Obras já concluídas</h1>
+  <h1>Conheça as Nossas Principais Obras</h1>
+  <hr class="stardart-line">
+  <!-- Radio Button para filtro de obras concluidas ou não-->
+  <!--Implementar filtro no back-end  -->
+  <div class="filtro-quadros">
+    <div>
+        <label>
+          <input type="radio" name="filtro-obra" checked=""/>
+          <span class="radio-label">Geral</span>
+        </label>
+      <label>
+        <input type="radio" name="filtro-obra" />
+        <span class="radio-label">Em andamento</span>
+      </label>
+      <label>
+        <input type="radio" name="filtro-obra" />
+        <span class="radio-label">Finalizadas</span>
+      </label>
+    </div>
+  </div>
+
   <div class="grade-quadros">
     <div class="card-obras">
       <div class="imagem-bg-obra" style="background-image: url('../img/instalcao-spda.jpeg')"></div>
