@@ -181,7 +181,7 @@ nav a:hover {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #cc9900;
   color: black;
   padding: 8px 0;
   text-align: center;
@@ -399,3 +399,57 @@ label:last-child span {
 .action:hover span {
   transform: translateX(4px);
 }
+
+/*CSS tela de obras*/
+.main-obras{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  justify-content: center;
+  width: 75rem;
+  border: solid 1px #000;
+  & > section > h2{
+    font-size: 2.4rem;
+    padding: 1.5rem 0 1.5rem 0;
+  }
+  & > section > hr{
+  width: 100%;
+  margin: auto;
+  margin-bottom: .8rem;
+  justify-content: center;
+  border: none;
+  height: 1px; /* Fina */
+  background-color: #474747; /* Cinza escuro ou preto */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  }
+}
+#content-obras{
+  display: flex;
+  justify-content: space-between;
+  & > img{
+    width: 60%;
+  }
+  
+  & > #description-obras> progress{
+    width: 80%;
+    height: 2rem;
+    background-color: none;
+  }
+  & > #description-obras> #tag-obras{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    margin: auto;
+  }
+  & > #description-obras> #tag-obras > ul{
+    display: flex;
+    flex-direction: row;
+    border: solid .1rem #cc9900;
+    padding: .4rem .6rem .4rem .6rem;
+    border-radius: 99.9rem;    
+  }
+}
+
+

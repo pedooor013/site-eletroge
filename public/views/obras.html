@@ -3,174 +3,66 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css">
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
     <title>Progresso das Obras</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: url('public/img/fundo-obras.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #333;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(to right, #ffffff, #ff9900);
-            padding: 15px 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header .logo {
-            height: 60px;
-            cursor: pointer;
-        }
-
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-
-        nav a:hover {
-            color: #333;
-        }
-
-        main {
-            padding: 60px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .quadro {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .quadro img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .quadro h2 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            color: #cc9900;
-        }
-
-        .progress-container {
-            background-color: #ddd;
-            border-radius: 10px;
-            height: 30px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background-color: #cc9900;
-            transition: width 0.5s ease;
-        }
-
-        footer {
-            margin-top: 60px;
-        }
-
-        .footer-section {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .footer-yellow-light {
-            background-color: #fff8cc;
-            color: #333;
-        }
-
-        .footer-yellow-dark {
-            background-color: #cc9900;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .footer-white {
-            background-color: white;
-        }
-
-        .img-eletroge-rodape {
-            height: 60px;
-            margin: 10px auto;
-        }
-    </style>
 </head>
 <body>
-
+<!--Cabeçalho-->
 <header>
-    <a href="index.html">
-        <img src="../img/logo-eletroge.png" alt="Logo EletroGe" class="logo" />
-    </a>
-    <nav>
-        <a href="index.html"><i class="fas fa-home"></i> Início</a>
-        <a href="servicos-eletroge.html"><i class="fas fa-tools"></i> Serviços</a>
-        <a href="#"><i class="fas fa-envelope"></i> Contato</a>
-    </nav>
+  <a href="index.html">
+    <img src="../img/logo-eletroge.png" alt="Logo EletroGe" class="logo" />
+  </a>
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Início</a>
+    <a href="servicos-eletroge.html"><i class="fas fa-tools"></i> Serviços</a>
+    <a href="#"><i class="fas fa-envelope"></i> Contato</a>
+  </nav>
 </header>
 
-<main>
-    <div style="
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    flex-wrap: nowrap;
-    padding: 40px 20px;
-    max-width: 1100px;
-    margin: 0 auto;
-    flex-direction: row;
-  ">
-        <img src="public/img/img-templo-londrina.jpg" alt="Imagem Principal" style="
-      width: 500px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      object-fit: cover;
-      max-height: 400px;
-    ">
+<main class="main-obras">
+    <section id="section-obras">
+        <h2 id="h2-nome-obra">
+            Nome da Obra
+        </h2>
+        <hr>
+        <div id="content-obras">
+            <img src="../img/coca-cola-img-industrial.jpg" alt="">
+            <div id="description-obras">
+                <progress value="30" max="100"></progress>
+                <div id="tag-obras">
+                    <ul>
+                        <i class="fa-solid fa-bolt"  style="color: #FFD43B;">
+                        </i>
+                        <h4>
+                            SPDA
+                        </h4>
+                    </ul>
+                    <ul>
+                        <i class="fa-solid fa-plug" style="color: #FFD43B;">
 
-        <div style="flex: 1;">
-            <h2 style="color: #cc9900; font-size: 1.8rem; margin-bottom: 15px;">
-                teste
-            </h2>
-
-            <div class="progress-container" style="margin-bottom: 15px;">
-                <div class="progress-bar" id="progressCentral" style="width: 0%;"></div>
+                        </i>
+                        <h4>
+                            Alta Tensão
+                        </h4>
+                    </ul>
+                </div>
+                <span id="span-description-obras">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia nisi incidunt quos commodi dolore repellendus provident, similique autem, obcaecati quidem, magnam consectetur ducimus sunt aperiam eius. Placeat, dolore aliquam?
+                </span>
             </div>
-
-            <p style="font-size: 1.1rem; line-height: 1.6;">
-                teste.
-            </p>
+            
         </div>
-    </div>
+    </section>
+
+
+
 </main>
 
-
-
+<!--Rodapé-->
 <footer>
     <div class="footer-section footer-yellow-light">
         <div>Email: contato@eletroge.com</div>
@@ -188,38 +80,5 @@
         />
     </div>
 </footer>
-<script>
-        // Função para pegar o ID da URL
-        function getIdDaURL() {
-        const params = new URLSearchParams(window.location.search);
-        return params.get('id');
-    }
-
-        const obraId = getIdDaURL();
-
-        if (!obraId) {
-        alert('ID da obra não especificado na URL.');
-    } else {
-        fetch(`/api/obras/${obraId}`)
-            .then(res => {
-                if (!res.ok) throw new Error('Erro ao buscar obra');
-                return res.json();
-            })
-            .then(obra => {
-                document.querySelector('main h2').textContent = obra.nome;
-                document.querySelector('main p').textContent = obra.descricao;
-                document.querySelector('.progress-bar').style.width = obra.progresso + '%';
-
-                const imagem = document.querySelector('main img');
-                if (obra.imagem_url) {
-                    imagem.src = obra.imagem_url;
-                    imagem.alt = obra.nome;
-                }
-            })
-            .catch(() => {
-                alert('Erro ao carregar dados da obra.');
-            });
-    }
-</script>
 </body>
 </html>
