@@ -30,9 +30,22 @@
         </h2>
         <hr>
         <div id="content-obras">
-            <img src="../img/coca-cola-img-industrial.jpg" alt="">
+            <div id="images-obras">
+                <div id="thumbnail-images-obras">
+                    <img src="../img/coca-cola-img-industrial.jpg" alt="">
+                    <img src="../img/img-principal.jpg" alt="">
+                    <img src="../img/instalacao-alta-tensao.jpg" alt="">
+                    <img src="../img/instalcao-spda.jpeg" alt="">
+                </div>
+                <div id="main-image-obras">
+                    <img src="../img/coca-cola-img-industrial.jpg" alt="">
+                </div>
+            </div>
             <div id="description-obras">
-                <progress value="30" max="100"></progress>
+                
+                <progress value="30" max="100" placeholder="teste">
+                </progress>
+
                 <div id="tag-obras">
                     <ul>
                         <i class="fa-solid fa-bolt"  style="color: #FFD43B;">
@@ -50,9 +63,9 @@
                         </h4>
                     </ul>
                 </div>
-                <span id="span-description-obras">
+                <p id="span-description-obras">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia nisi incidunt quos commodi dolore repellendus provident, similique autem, obcaecati quidem, magnam consectetur ducimus sunt aperiam eius. Placeat, dolore aliquam?
-                </span>
+                </p>
             </div>
             
         </div>
@@ -61,7 +74,6 @@
 
 
 </main>
-
 <!--Rodapé-->
 <footer>
     <div class="footer-section footer-yellow-light">
@@ -80,5 +92,15 @@
         />
     </div>
 </footer>
+<script>
+  const thumbnails = document.querySelectorAll('#thumbnail-images-obras img');
+  const mainImage = document.querySelector('#main-image-obras img');
+
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      mainImage.src = thumb.src;
+    });
+  });
+</script>
 </body>
 </html>

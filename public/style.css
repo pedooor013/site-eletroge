@@ -197,7 +197,9 @@ nav a:hover {
 
 /* Rodapé */
 footer {
-  margin-top: 60px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
 .footer-section {
@@ -408,7 +410,6 @@ label:last-child span {
   margin: auto;
   justify-content: center;
   width: 75rem;
-  border: solid 1px #000;
   & > section > h2{
     font-size: 2.4rem;
     padding: 1.5rem 0 1.5rem 0;
@@ -427,14 +428,41 @@ label:last-child span {
 #content-obras{
   display: flex;
   justify-content: space-between;
-  & > img{
-    width: 60%;
+  width: 100%;
+  & > #description-obras{
+    width: 40%;
+    margin: 0 1rem 0 1rem;
+    justify-content: end;
   }
-  
   & > #description-obras> progress{
-    width: 80%;
+   appearance: none;
+    -webkit-appearance: none;
+    width: 90%;
     height: 2rem;
-    background-color: none;
+    border: none;
+     box-shadow: inset 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 99.9rem;
+    overflow: hidden;
+    position: relative;
+    background-color: #ddd;
+    &::-webkit-progress-bar{
+      background-color: rgb(62, 73, 99, 0.1);
+      opacity: 1;
+    }
+    &::-webkit-progress-value{
+      background: #cc9900;
+      border-radius: 99.9rem;
+    }
+    &::-moz-progress-bar{
+      background: none;
+      border-radius: 99.9rem;
+    }
   }
   & > #description-obras> #tag-obras{
     display: flex;
@@ -450,6 +478,284 @@ label:last-child span {
     padding: .4rem .6rem .4rem .6rem;
     border-radius: 99.9rem;    
   }
+& > #description-obras> #span-description-obras{
+  margin: auto;
+  text-align: center;
+  margin: 1rem 2rem 1rem 2rem;
+}
+}
+#images-obras {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 800px;
+  margin: auto;
 }
 
+/* Miniaturas na esquerda, em coluna */
+#thumbnail-images-obras {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#thumbnail-images-obras img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: 2px solid transparent;
+}
+
+#thumbnail-images-obras img:hover {
+  transform: scale(1.05);
+  border-color: #cc9900;
+}
+
+/* Imagem principal na direita */
+#main-image-obras img {
+  width: 45rem;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+}
+/* Seu CSS original permanece... */
+
+/* ===== Responsividade ===== */
+
+/* Para telas até 1024px (tablets) */
+@media (max-width: 1024px) {
+  /* Ajuste do header para empilhar */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+  nav a {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+
+  /* Features fica em 2 colunas */
+  .features {
+    justify-content: center;
+  }
+  .feature {
+    max-width: 45%;
+    margin: 10px 5px;
+  }
+
+  /* Quadros - mais espaço e quebra */
+  .quadros {
+    justify-content: center;
+  }
+  .quadro {
+    width: 180px;
+    height: 300px;
+  }
+
+  /* Grade quadros passa para 2 colunas */
+  .grade-quadros {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+  }
+
+  /* Main obras e content obras: empilhar vertical */
+  .main-obras {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  #content-obras {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-obras > #description-obras {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  /* Images obras: empilhar miniaturas e imagem principal */
+  #images-obras {
+    flex-direction: column;
+    max-width: 100%;
+    gap: 15px;
+  }
+  #thumbnail-images-obras {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+  #thumbnail-images-obras img {
+    width: 60px;
+    height: 60px;
+  }
+  #main-image-obras img {
+    width: 100%;
+    max-height: 350px;
+  }
+
+  /* Ajuste botão andamento */
+  .botao-andamento {
+    width: 100%;
+    padding: 12px 0;
+  }
+}
+
+
+/*Reponsividade*/
+
+/* Para telas pequenas, até 600px (celulares) */
+@media (max-width: 600px) {
+  header {
+    padding: 10px 15px;
+  }
+  nav a {
+    font-size: 0.9rem;
+    margin: 0 10px 0 0;
+  }
+
+  .features {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+  .feature {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  .quadros {
+    gap: 10px;
+  }
+  .quadro {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .grade-quadros {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .main-obras {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  #content-obras > #description-obras {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  #images-obras {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  #thumbnail-images-obras {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+  #thumbnail-images-obras img {
+    width: 50px;
+    height: 50px;
+  }
+  #main-image-obras img {
+    width: 100%;
+    max-height: 250px;
+  }
+
+  .botao-andamento {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  /* Ajuste fontes para celular */
+  .valores h1,
+  .obras-andamento h1,
+  .quadros-wrapper h1,
+  .quadros-wrapper h1 {
+    font-size: 1.8rem;
+  }
+
+  .valores p,
+  .obras-andamento p,
+  .desc-quadro-obra {
+    font-size: 1rem;
+  }
+}
+/* Footer padrão */
+footer {
+  width: 100%;
+  position: relative; /* melhor que absolute para responsividade */
+  bottom: 0;
+  left: 0;
+}
+
+.footer-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-yellow-light {
+  background-color: #fff8cc;
+  color: #333;
+}
+
+.footer-yellow-dark {
+  background-color: #cc9900;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.footer-white {
+  background-color: white;
+}
+
+.img-eletroge-rodape {
+  height: 60px;
+  margin: 10px auto;
+  display: block;
+}
+
+/* Responsividade do footer */
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 15px 10px;
+  }
+
+  .footer-yellow-dark {
+    font-size: 1rem;
+  }
+
+  .img-eletroge-rodape {
+    height: 45px;
+    margin: 8px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section {
+    padding: 10px 5px;
+  }
+
+  .footer-yellow-dark {
+    font-size: 0.9rem;
+  }
+
+  .img-eletroge-rodape {
+    height: 35px;
+    margin: 5px auto;
+  }
+}
 
