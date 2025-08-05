@@ -770,7 +770,6 @@ img {
   width: 60%;
   & > h1{
     font-size: 40px;
-    text-shadow: ;
     margin-bottom: 1rem;
   }
   & > p {
