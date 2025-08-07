@@ -11,7 +11,7 @@
 body {
   font-family: 'Arial', sans-serif;
   background-color: rgba(63, 74, 100, 0.024);
-  color: #333;
+  background-color: #f5f5f5;
   width: 100%;
   height: 100%;
 }
@@ -106,7 +106,7 @@ button:hover {
   text-align: center;
 }
 
-.valores h1 {
+.valores h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
@@ -249,15 +249,15 @@ label:last-child span {
 .obras-andamento{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   height: 100%;
   align-items: center;
   margin: auto;
 }
 
-.obras-andamento h1 {
-  font-size: 3.2rem;
+.obras-andamento h2 {
+  font-size: 2.6rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   & > .botao-andamento{
@@ -268,13 +268,13 @@ label:last-child span {
 .obras-andamento p {
   max-width: 700px;
   margin: 0 auto 30px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
   text-align: center;
   font-size: 1.6rem;
 }
 
-.botao-andamento {
+a .botao-andamento {
   background-color: transparent;
   color: #cc9900;
   border: 2px solid #cc9900;
@@ -284,6 +284,7 @@ label:last-child span {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 5rem;
 }
 
 .botao-andamento:hover {
@@ -646,10 +647,10 @@ label:last-child span {
   }
 
   /* Ajuste fontes para celular */
-  .valores h1,
-  .obras-andamento h1,
-  .quadros-wrapper h1,
-  .quadros-wrapper h1 {
+  .valores h2,
+  .obras-andamento h2,
+  .quadros-wrapper h2,
+  .quadros-wrapper h2 {
     font-size: 1.8rem;
   }
 
@@ -777,13 +778,15 @@ img {
   & > h1{
     font-size: 40px;
     margin-top: 8rem;
-    text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.3);
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
   }
   & > p {
     width: 60%;
     margin: auto;
     font-size: 1.6rem;
-    text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.3);  
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
   }
 }
 .obras-infos{
@@ -808,9 +811,10 @@ img {
     & > p{
       margin-bottom: 1rem;
     }
-    & > button{
+    & > a >button{
       border-radius: .5rem;
       font-size: 1.2rem;
+      margin-top: .5rem;
       &:hover{
         color: #f4d065;
       }
@@ -838,7 +842,14 @@ img {
         border-radius: 50%;
         border: solid .1rem #000;
         width: 20rem;
-
+        box-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.3);  
+      }
+      & > h3{
+        margin-top: .5rem;
+      }
+      & > p{
+        width: 60%;
+        margin-top: .5rem;
       }
     }
   }
