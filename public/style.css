@@ -13,6 +13,9 @@ body {
   background-color: #f5f5f5;
   width: 100%;
   height: 100%;
+  & > .nav-mobile{
+    display: none;
+  }
 }
 
 /* Cabeçalho com gradiente corrigido */
@@ -72,6 +75,80 @@ button:hover {
   background-color: white;
   color: #cc9900;
 }
+
+header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #ffffff, #ff9900);
+      padding: 15px 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo {
+      height: 60px;
+      cursor: pointer;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: #333;
+    }
+
+    /* Ajuste para o container hero */
+    .hero {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    .hero img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Texto centralizado sobre a imagem */
+    .hero .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      pointer-events: none; /* Para não interferir em cliques */
+    }
+
+    /* Botão transparente */
+    .hero button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: transparent;
+      border: 2px solid white;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .hero button:hover {
+      background-color: white;
+      color: #ff9900;
+    }
 
 /* Features */
 .features {
@@ -886,7 +963,6 @@ img {
     height: 0px;
   }
   & > form {
-    margin-top: -50px;
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -953,3 +1029,95 @@ img {
     }
   }
 }
+/*Ajustando responsividade*/
+
+/*index.html responsivo*/
+
+@media (max-width:1280px){
+  body{
+    & > .nav-mobile{
+      display: flex;
+    }
+  }
+  header{
+    display: flex;
+    height: 5rem;
+    margin: auto;
+    width: 100%;
+    & > a > .logo{
+      position: relative;
+      left: 0;
+    }
+    & > nav{
+      display: none;
+    }
+    
+  }
+  .hero{
+    display: flex;
+    flex-direction: column;
+    height: 15rem;
+    & > img{
+      width: 100%;
+      height: 100%;
+    }
+    & > .hero-text{
+      margin: auto;
+      width: 100%;
+      & > h1{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        width: 80%;
+        font-size:2rem;
+      }
+    }
+  }
+
+
+  /*Rodapé mobile*/
+  .nav-mobile{
+    display: block;
+    position: fixed;
+    background-color: #cc9900;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    border-top: solid .1rem #000;
+    margin: auto;
+    justify-content: center;
+    & > nav{
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: auto;
+      & > a > i{
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .features{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: space-between;
+    
+    & > .feature{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &>p{
+        display: none;
+      }
+    }
+  }
+}
+
+
+/*@media (max-width:){}
+
+
+@media (max-width:){}
