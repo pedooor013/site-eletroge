@@ -383,7 +383,7 @@ a .botao-andamento {
   font-size: 40px;
   color: #333;
 }
-.quadros-obras{
+#quadros-obras{
   width:60%;
   margin-top: 2rem;
   display: grid;
@@ -1131,7 +1131,7 @@ img {
 .quadros-wrapper {
   
   /* Container principal das obras */
-  & > .quadros-obras {
+  & > #quadros-obras {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));

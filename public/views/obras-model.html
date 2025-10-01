@@ -31,88 +31,26 @@
       <div class="filtro-quadros">
         <div>
           <label>
-            <input type="radio" name="filtro-obra" checked="" />
+            <input type="radio" name="filtro-obra" checked="" onclick="filterStatusConstruction()"/>
             <span class="radio-label">Geral</span>
           </label>
           <label>
-            <input type="radio" name="filtro-obra" />
+            <input type="radio" name="filtro-obra" onclick="filterStatusConstruction()"/>
             <span class="radio-label">Em andamento</span>
           </label>
           <label>
-            <input type="radio" name="filtro-obra" />
+            <input type="radio" name="filtro-obra" onclick="filterStatusConstruction()"/>
             <span class="radio-label">Finalizadas</span>
           </label>
         </div>
       </div>
-      <div class="quadros-obras">
-        <div class="grade-quadros">
-          <div class="card-obras">
-            <a href="obras.html">
-              <div
-                class="imagem-bg-obra"
-                style="background-image: url('../img/instalcao-spda.jpeg')"
-              ></div>
-            </a>
-            <div class="info-quadros">
-              <a href="obras.html">
-                <span class="titulo-quadro-obra">Teste nome da obra </span>
-              </a>
-
-              <p class="desc-quadro-obra">Teste da descrição da obra</p>
-              <a class="action" href="obras.html">
-                <p class="p-veja-mais">Veja mais</p>
-                <span aria-hidden="true"> → </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="grade-quadros">
-          <div class="card-obras">
-            <a href="#">
-              <div
-                class="imagem-bg-obra"
-                style="background-image: url('../img/instalcao-spda.jpeg')"
-              ></div>
-            </a>
-            <div class="info-quadros">
-              <a href="#">
-                <span class="titulo-quadro-obra">Teste nome da obra </span>
-              </a>
-
-              <p class="desc-quadro-obra">Teste da descrição da obra</p>
-              <a class="action" href="#">
-                <p class="p-veja-mais">Veja mais</p>
-                <span aria-hidden="true"> → </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="grade-quadros">
-          <div class="card-obras">
-            <a href="#">
-              <div
-                class="imagem-bg-obra"
-                style="background-image: url('../img/instalcao-spda.jpeg')"
-              ></div>
-            </a>
-            <div class="info-quadros">
-              <a href="#">
-                <span class="titulo-quadro-obra">Teste nome da obra </span>
-              </a>
-
-              <p class="desc-quadro-obra">Teste da descrição da obra</p>
-              <a class="action" href="#">
-                <p class="p-veja-mais">Veja mais</p>
-                <span aria-hidden="true"> → </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        
+      
+      <div id="quadros-obras">
       </div>
+
     </section>
     <!-- Rodapé -->
-   <div class="nav-mobile">
+  <div class="nav-mobile">
       <nav>
         <a href="obras-model.html"><i class="fas fa-tools"></i></a>
         <a href="index.html"><i class="fas fa-home"></i></a>
@@ -136,5 +74,6 @@
         />
       </div>
     </footer>
+    <script src="../script.js"></script>
   </body>
 </html>
