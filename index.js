@@ -7,7 +7,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use('/eletroge/obras', obrasRoutes);
+app.use(express.static("public"));
+
+app.use('/eletroge', obrasRoutes);
 
 app.listen(PORT, () =>{
     console.log(`Servidor rodando em http://localhost:${PORT}`);

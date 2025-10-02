@@ -1,7 +1,10 @@
 async function carregarCardObras(){
 try{
     const resposta = await fetch('/obras');
-    const obras = await resposta.json();
+    if (resposta.status === 200){
+        const obras = await resposta.json();
+        console.log(obras)
+    }
 
     const container = document.getElementById('quadros-obras');
     container.innerHTML = "";

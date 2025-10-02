@@ -3,7 +3,7 @@ import { listarObras, listarObrasPorId } from '../controllers/obras.controllers.
 
 const router = express.Router();
 
-router.get('/', listarObras);
-router.get('/:id', listarObrasPorId);
+router.get('/obras/', listarObras);
+router.get('/obras/:id', listarObrasPorId);
 
 export default router;
