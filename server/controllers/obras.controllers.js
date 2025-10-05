@@ -1,11 +1,11 @@
-import { getObrasPorId, getTodasObras } from "../models/obras.models.js";
+import { getObrasPorId, getTodasObras, filtrarObrasEmAndamento, filtrarObrasFinalizadas } from "../models/obras.models.js";
 
 export async function listarObras(req, res){
     try{
         const obras = await getTodasObras();
         res.json(obras);
     }catch(err){
-        res.status(500).json({err: 'Erro ao buscar produtos'})
+        res.status(500).json({err: 'Erro ao buscar obras'})
     }
 }
 
@@ -21,6 +21,22 @@ export async function listarObrasPorId(req, res){
     }catch(err){
         res.status(500).json({err: "Erro ao buscar a obra"});
     }
+}
 
+export async function filtrarObrasEmAndamentoController(req, res){
+    try{
+        const obras = await filtrarObrasEmAndamento();
+        res.json(obras);
+    }catch(err){
+        res.status(500).json({err: 'Erro ao buscar as obras'})
+    }
+}
 
+export async function filtrarObrasFinalizadasController(req, res){
+    try{
+        const obras = await filtrarObrasFinalizadas();
+        res.json(obras);
+    }catch(err){
+        res.status(500).json({err: 'Erro ao buscar as obras'})
+    }
 }
