@@ -37,8 +37,7 @@ export async function filtrarObrasFinalizadasController(req, res){
         const obras = await filtrarObrasFinalizadasModel();
         res.json(obras);
     }catch(err){
-        res.status(500).json({err: 'ERRO NO CONTROLLER'})/* 
-        res.status(505).json({err: 'Erro ao buscar as obras'}) */
+        res.status(505).json({err: 'Erro ao buscar as obras'});
 
     }
 }
