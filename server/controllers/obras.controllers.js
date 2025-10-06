@@ -1,4 +1,4 @@
-import { getObrasPorId, getTodasObras, filtrarObrasEmAndamento, filtrarObrasFinalizadas } from "../models/obras.models.js";
+import { getObrasPorId, getTodasObras, filtrarObrasFinalizadasModel, filtrarObrasEmAndamentoModel } from "../models/obras.models.js";
 
 export async function listarObras(req, res){
     try{
@@ -25,7 +25,7 @@ export async function listarObrasPorId(req, res){
 
 export async function filtrarObrasEmAndamentoController(req, res){
     try{
-        const obras = await filtrarObrasEmAndamento();
+        const obras = await filtrarObrasEmAndamentoModel();
         res.json(obras);
     }catch(err){
         res.status(500).json({err: 'Erro ao buscar as obras'})
@@ -34,9 +34,11 @@ export async function filtrarObrasEmAndamentoController(req, res){
 
 export async function filtrarObrasFinalizadasController(req, res){
     try{
-        const obras = await filtrarObrasFinalizadas();
+        const obras = await filtrarObrasFinalizadasModel();
         res.json(obras);
     }catch(err){
-        res.status(500).json({err: 'Erro ao buscar as obras'})
+        res.status(500).json({err: 'ERRO NO CONTROLLER'})/* 
+        res.status(505).json({err: 'Erro ao buscar as obras'}) */
+
     }
 }

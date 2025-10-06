@@ -1,6 +1,6 @@
 const URLTodasObras = 'http://localhost:3000/eletroge/obras';
 const URLDetalheObra = 'http://localhost:3000/eletroge/obras/';
-const URLObrasFinalizadas = 'http://localhost:3000/eletroge/obras/finalizadas';
+const URLObrasFinalizadas = 'http://localhost:3000/eletroge/obras/finalizadas/';
 const URLObrasEmAndamento = 'http://localhost:3000/eletroge/obras/andamento ';
 
 
@@ -10,6 +10,7 @@ async function filtrarObrasFinalizadas(){
         const resposta = await fetch(URLObrasFinalizadas);
         if(resposta.status === 200){
             obras = await resposta.json();
+            console.log({obras});
         }
     const container = document.getElementById('quadros-obras');
     container.innerHTML = "";
@@ -22,7 +23,7 @@ async function filtrarObrasFinalizadas(){
             <a href="obras.html?id=${obras.id}">
             <div
                 class="imagem-bg-obra"
-                style="background-image: url('${obras.imagem || "../img/placeholder.jpg"}')">
+                style="background-image: url('${obras.imagem}')">
             </div>
             </a>
             <div class="info-quadros">
@@ -49,8 +50,10 @@ async function filtrarObrasEmAndamento(){
     try{
         let obras;
         const resposta = await fetch(URLObrasEmAndamento);
+        console.log(resposta)
         if(resposta.status === 200){
             obras = await resposta.json();
+            console.log(obras);
         }
     const container = document.getElementById('quadros-obras');
     container.innerHTML = "";
@@ -63,7 +66,7 @@ async function filtrarObrasEmAndamento(){
             <a href="obras.html?id=${obras.id}">
             <div
                 class="imagem-bg-obra"
-                style="background-image: url('${obras.imagem || "../img/placeholder.jpg"}')">
+                style="background-image: url('${obras.imagem}')">
             </div>
             </a>
             <div class="info-quadros">
@@ -107,7 +110,7 @@ try{
             <a href="obras.html?id=${obras.id}">
             <div
                 class="imagem-bg-obra"
-                style="background-image: url('${obras.imagem || "../img/placeholder.jpg"}')">
+                style="background-image: url('${obras.imagem}')">
             </div>
             </a>
             <div class="info-quadros">

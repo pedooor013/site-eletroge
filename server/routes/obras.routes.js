@@ -4,8 +4,8 @@ import { listarObras, listarObrasPorId, filtrarObrasEmAndamentoController, filtr
 const router = express.Router();
 
 router.get('/obras/', listarObras);
-router.get('/obras/:id', listarObrasPorId);
 router.get('/obras/finalizadas', filtrarObrasFinalizadasController);
 router.get('/obras/andamento', filtrarObrasEmAndamentoController);
+router.get('/obras/:id', listarObrasPorId);
 
 export default router;
