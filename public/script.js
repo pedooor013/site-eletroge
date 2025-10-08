@@ -36,7 +36,6 @@ function mostrarCards(obras){
 
 }
 
-
 async function filtrarObrasFinalizadas(){
     try{
         let obras;
@@ -66,8 +65,6 @@ async function filtrarObrasEmAndamento(){
     }
 }
 
-
-
 async function carregarCardObras(){
 try{
     let obras;
@@ -80,6 +77,5 @@ try{
     console.log("Erro ao carregar os produtos: " , err);
     }
 }
-
 
 carregarCardObras();

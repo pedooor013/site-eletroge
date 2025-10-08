@@ -457,7 +457,7 @@ a .botao-andamento {
 }
 
 /*CSS tela de obras*/
-.main-obras {
+#main-obras {
   display: flex;
   align-items: center;
   text-align: center;
@@ -620,7 +620,7 @@ hr {
   }
 
   /* Main obras e content obras: empilhar vertical */
-  .main-obras {
+  #main-obras {
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -696,7 +696,7 @@ hr {
     padding: 0 10px;
   }
 
-  .main-obras {
+  #main-obras {
     width: 100%;
     padding: 0 10px;
   }
