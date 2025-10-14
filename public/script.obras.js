@@ -21,7 +21,7 @@ async function refletirDetalhesObrasHTML(obra){
             </div>
             <div id="description-obras">
             <progress value="${obra.progresso}" max="100" placeholder="teste"></progress>
-
+                            
             <div id="tag-obras">
                 <!-- <ul>
                 <i class="fa-solid fa-plug" style="color: #ffd43b"> </i>
