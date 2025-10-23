@@ -6,6 +6,7 @@ export async function exibirDadosObraController(req, res){
         const detalhesObras = await exibirDadosObraModels(id);
         res.json(detalhesObras);
     }catch(err){
+        console.log({err});
         res.status(500).json({err: "Erro ao buscar os detalhes das obras"});
     }
 }
