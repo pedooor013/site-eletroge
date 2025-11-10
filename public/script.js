@@ -19,12 +19,12 @@ function mostrarCards(obras){
             </div>
             </a>
             <div class="info-quadros">
-            <a href="obras.html">
+            <a href="obras.html?id=${obras.id}">
                 <span class="titulo-quadro-obra">${obras.nome}</span>
             </a>
 
             <p class="desc-quadro-obra">${obras.descricao}</p>
-            <a class="action" href="obras.html">
+            <a class="action" href="obras.html?id=${obras.id}">
                 <p class="p-veja-mais">Veja mais</p>
                 <span aria-hidden="true"> → </span>
             </a>

@@ -1,56 +1,34 @@
-const URLDetalheObra = 'http://localhost:3000/eletroge/obras/';
-
-async function refletirDetalhesObrasHTML(obra){
-    const container = document.getElementById("main-obras");
-    container.innerHTML = "";
-    
-    obra.forEach((obra) =>{
-        const detalhes = document.createElement("section");
-        detalhes.classList.add('section-obras');
-        detalhes.innerHTML = `
-        <h2 id="h2-nome-obra">${obra.nome}</h2>
-        <hr />
-        <div id="content-obras">
-            <div id="images-obras">
-            <div id="thumbnail-images-obras">
-            <!-- estruturar como deve ser feito -->
-            </div>
-            <div id="main-image-obras">
-                <img src="${obra.imagem}" alt="" />
-            </div>
-            </div>
-            <div id="description-obras">
-            <progress value="${obra.progresso}" max="100" placeholder="teste"></progress>
-                            
-            <div id="tag-obras">
-                <!-- <ul>
-                <i class="fa-solid fa-plug" style="color: #ffd43b"> </i>
-                <h4>Alta Tensão</h4>
-                </ul> -->
-                ${obra.servicos}
-            </div>
-            <p id="span-description-obras">
-                <!-- descricao da obra -->
-            </p>
-            </div>
-        </div>
-        `
-    })
-    let imagensComplementares;
-    
-
-}
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
 
 
-async function carregarInformacoesDasObras(id){
+async function carregarDetalhes(id) {
     try{
-        let obra;
-        const resposta = await fetch(`${URLDetalheObra}`);
+        const resposta = await fetch(`http://localhost:3000/eletroge/obras/detalhes/${id}`);
+
         if(resposta.status === 200){
-            obra = await resposta.json();
-            console.log({obra});
+            const dados = await resposta.json();
+            console.log("Detalhes:", dados);
+            montarTela(dados[0]);
         }
     }catch(err){
-
+        console.error("Erro ao carregar os detalhes: ", err);
     }
 }
+
+function montarTela(dados){
+    document.getElementById("titulo-obra").innerHTML = dados.nome;
+    document.getElementById("descricao-obra").innerHTML = dados.descricao;
+
+    const divImgs = document.getElementById("lista-imagens");
+    dados.imagens.forEach(url =>{
+        divImgs.innerHTML += `<img src="${url}" class="img-detalhe">`;
+    });
+
+    const divServicos = document.getElementById("lista-servicos");
+    dados.servicos.forEach(serv =>{
+        divServicos.innerHTML += `<ul>${serv.nome   } - ${serv.descricao}</ul>`
+    });
+}
+
+carregarDetalhes(id);
