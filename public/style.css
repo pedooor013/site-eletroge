@@ -518,21 +518,24 @@ hr {
     }
   }
   & > #description-obras > #tag-obras {
+    width: 80%;
     display: flex;
     flex-direction: inherit;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 60%;
     margin: auto;
   }
   & > #description-obras > #tag-obras > ul {
+    width: 100%;
     display: flex;
     flex-direction: row;
     border: solid 0.1rem #cc9900;
     padding: 0.4rem 0.6rem 0.4rem 0.6rem;
     border-radius: 99.9rem;
     margin: auto;
+    align-items: center;
     margin-bottom: 0.4rem;
+    justify-content: space-between;
   }
   & > #description-obras > #span-description-obras {
     margin: auto;

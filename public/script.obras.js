@@ -16,19 +16,62 @@ async function carregarDetalhes(id) {
     }
 }
 
-function montarTela(dados){
-    document.getElementById("titulo-obra").innerHTML = dados.nome;
-    document.getElementById("descricao-obra").innerHTML = dados.descricao;
+function montarTela(dados) {
+    const detalhes = document.getElementById('section-obras');
 
-    const divImgs = document.getElementById("lista-imagens");
-    dados.imagens.forEach(url =>{
-        divImgs.innerHTML += `<img src="${url}" class="img-detalhe">`;
+    // imagem principal = primeira imagem do array
+    const imagemPrincipal = dados.imagens.length > 0 ? dados.imagens[0] : "";
+
+    // montar thumbnails
+    let thumbnailsHTML = "";
+    dados.imagens.forEach(img => {
+        thumbnailsHTML += `<img src="${img}" class="thumb-img">`;
     });
 
-    const divServicos = document.getElementById("lista-servicos");
-    dados.servicos.forEach(serv =>{
-        divServicos.innerHTML += `<ul>${serv.nome   } - ${serv.descricao}</ul>`
+    // montar serviços
+    let servicosHTML = "";
+    dados.servicos.forEach(serv => {
+        servicosHTML += `
+            <ol>${serv.nome} ${serv.descricao}</ol>
+        `;
     });
+
+    detalhes.innerHTML = `
+        <h2 id="h2-nome-obra">${dados.nome}</h2>
+        <hr />
+        <div id="content-obras">
+
+            <div id="images-obras">
+
+                <div id="thumbnail-images-obras">
+                    ${thumbnailsHTML}
+                </div>
+
+                <div id="main-image-obras">
+                    <img src="${imagemPrincipal}" alt="">
+                </div>
+
+            </div>
+
+            <div id="description-obras">
+
+                <progress value="${dados.progresso}" max="100"></progress>
+
+                <div id="tag-obras">
+
+                    <ul>
+                        ${servicosHTML}
+                    </ul>
+                </div>
+
+                <p id="span-description-obras">${dados.descricao}</p>
+
+            </div>
+
+        </div>
+    `;
 }
+
+
 
 carregarDetalhes(id);
