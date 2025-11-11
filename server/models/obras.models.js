@@ -1,20 +1,34 @@
 import pool from '../db.js';
 
 export async function  getTodasObras(){
-    const resultado = await pool.query('SELECT * FROM obras ORDER BY id ASC');
+    const resultado = await pool.query(`
+    SELECT obras.nome, obras.descricao, img.url
+    FROM obras
+    LEFT JOIN imagens img ON img.obra_id = obras.id
+    ORDER BY obras.id ASC
+    `);
     return resultado.rows;
 };
 
 export async function filtrarObrasFinalizadasModel(){
     const resultado = await pool.query(`
-        SELECT * FROM obras 
-        WHERE progresso = 100
+        SELECT obras.nome, obras.descricao, img.url
+        FROM obras
+        LEFT JOIN imagens img ON img.obra_id = obras.id
+        WHERE obras.progresso = 100
+        ORDER BY obras.id ASC
         `);
     return resultado.rows;
 };
 
 export async function filtrarObrasEmAndamentoModel(){
-    const resultado = await pool.query('SELECT * FROM obras WHERE progresso <= 99');
+    const resultado = await pool.query(`
+        SELECT obras.nome, obras.descricao, img.url
+        FROM obras
+        LEFT JOIN imagens img ON img.obra_id = obras.id
+        WHERE obras.progresso <= 99
+        ORDER BY obras.id ASC
+        `);
     return resultado.rows;  
 };
 

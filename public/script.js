@@ -6,17 +6,13 @@ const URLObrasEmAndamento = 'http://localhost:3000/eletroge/obras/andamento ';
 function mostrarCards(obras){
     const container = document.getElementById('quadros-obras');
     container.innerHTML = "";
-
     obras.forEach((obras) =>{
         const card = document.createElement("div");
         card.classList.add("grade-quadros");
         card.innerHTML = `
         <div class="card-obras">
             <a href="obras.html?id=${obras.id}">
-            <div
-                class="imagem-bg-obra"
-                style="background-image: url('${obras.imagem}')">
-            </div>
+            <img class="imagem-bg-obra" src="${obras.url}">
             </a>
             <div class="info-quadros">
             <a href="obras.html?id=${obras.id}">
@@ -71,6 +67,7 @@ try{
     const resposta = await fetch(URLTodasObras);
     if (resposta.status === 200){
         obras = await resposta.json();
+        console.log(obras)
     }
     mostrarCards(obras);
 }catch(err){
