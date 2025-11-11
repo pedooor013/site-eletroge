@@ -2,7 +2,7 @@ import pool from '../db.js';
 
 export async function  getTodasObras(){
     const resultado = await pool.query(`
-    SELECT obras.nome, obras.descricao, img.url
+    SELECT obras.nome, obras.descricao, img.url, obras.id
     FROM obras
     LEFT JOIN imagens img ON img.obra_id = obras.id
     ORDER BY obras.id ASC
@@ -12,7 +12,7 @@ export async function  getTodasObras(){
 
 export async function filtrarObrasFinalizadasModel(){
     const resultado = await pool.query(`
-        SELECT obras.nome, obras.descricao, img.url
+        SELECT obras.nome, obras.descricao, img.url, obras.id
         FROM obras
         LEFT JOIN imagens img ON img.obra_id = obras.id
         WHERE obras.progresso = 100
@@ -23,7 +23,7 @@ export async function filtrarObrasFinalizadasModel(){
 
 export async function filtrarObrasEmAndamentoModel(){
     const resultado = await pool.query(`
-        SELECT obras.nome, obras.descricao, img.url
+        SELECT obras.nome, obras.descricao, img.url, obras.id
         FROM obras
         LEFT JOIN imagens img ON img.obra_id = obras.id
         WHERE obras.progresso <= 99

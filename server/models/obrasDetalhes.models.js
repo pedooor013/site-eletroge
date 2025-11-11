@@ -15,13 +15,12 @@ export async function exibirDadosObraModels(id){
         )
     ) FILTER (WHERE s.id IS NOT NULL) AS servicos,
     ARRAY_AGG(DISTINCT i.url) FILTER (WHERE i.url IS NOT NULL) AS imagens
-FROM obras o
-LEFT JOIN obra_servico os ON os.obra_id = o.id
-LEFT JOIN servicos s ON s.id = os.servico_id
-LEFT JOIN imagens i ON i.obra_id = o.id
-WHERE o.id = $1
-GROUP BY o.id, o.nome, o.descricao, o.progresso;
-
+    FROM obras o
+    LEFT JOIN obra_servico os ON os.obra_id = o.id
+    LEFT JOIN servicos s ON s.id = os.servico_id
+    LEFT JOIN imagens i ON i.obra_id = o.id
+    WHERE o.id = $1
+    GROUP BY o.id, o.nome, o.descricao, o.progresso;
         `, [id]);
         
     return detalhesObras.rows;
