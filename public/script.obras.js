@@ -8,7 +8,6 @@ async function carregarDetalhes(id) {
 
         if(resposta.status === 200){
             const dados = await resposta.json();
-            console.log("Detalhes:", dados);
             montarTela(dados[0]);
         }
     }catch(err){
@@ -24,8 +23,12 @@ function montarTela(dados) {
 
     // montar thumbnails
     let thumbnailsHTML = "";
+    let contadorDeImagens = 0;
     dados.imagens.forEach(img => {
-        thumbnailsHTML += `<img src="${img}" class="thumb-img">`;
+        if(contadorDeImagens != 0){
+            thumbnailsHTML += `<img src="${img}" id="thumbnail-images-obras">`;
+        }
+        contadorDeImagens++;
     });
 
     // montar serviços
@@ -38,18 +41,18 @@ function montarTela(dados) {
 
     detalhes.innerHTML = `
         <h2 id="h2-nome-obra">${dados.nome}</h2>
-        <hr />
+        <hr />  
         <div id="content-obras">
 
             <div id="images-obras">
 
-                <div id="thumbnail-images-obras">
-                    ${thumbnailsHTML}
-                </div>
-
-                <div id="main-image-obras">
-                    <img src="${imagemPrincipal}" alt="">
-                </div>
+            <div id="thumbnail-images-obras">
+                ${thumbnailsHTML}
+            </div>
+            
+            <div id="main-image-obras">
+            <img src="${imagemPrincipal}" id="main-image-obras">
+            </div>
 
             </div>
 
@@ -70,6 +73,17 @@ function montarTela(dados) {
 
         </div>
     `;
+        const thumbnails = document.querySelectorAll("#thumbnail-images-obras img");
+    const mainImage = document.querySelector("#main-image-obras img");
+
+    thumbnails.forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+            const trocaDeImg = mainImage.src;
+            mainImage.src = thumb.src;
+            thumb.src = trocaDeImg;
+
+        });
+    });
 }
 
 

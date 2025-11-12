@@ -8,6 +8,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <title>Progresso das Obras</title>
   </head>
   <body class="body-contact-us">
@@ -21,64 +27,34 @@
         <a href="servicos-eletroge.html"
           ><i class="fas fa-tools"></i> Serviços</a
         >
-        <a href="contato-eletroge.html"><i class="fas fa-envelope"></i> Contato</a>
+        <a href="contato-eletroge.html"
+          ><i class="fas fa-envelope"></i> Contato</a
+        >
       </nav>
     </header>
 
     <main class="main-contact-us">
-      <!--container do formulário-->~
-      <div class="div-form-container">
-        <h2>ENTRE EM CONTATO CONOSCO!</h2>
+      <div class="div-contato-container">
+        <h3>ENTRE EM CONTATO CONOSCO!</h3>
         <hr />
-        <!--criação do formulario-->
-        <form action="" method="post">
-          <!--Input do nome do cliente-->
-          <div class="input-container">
-            <i class="fa-regular fa-user"></i>
-            <input
-              type="text"
-              name="nameClient"
-              id="nameClient"
-              class="name-client"
-              placeholder="Digite o seu nome..."
-            />
+        <div class="opcoes-contato">
+          <div class="contato-wpp">
+            <a href="https://wa.me/554399949661?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20com%20o%20Grupo%20EletroGe%20para%20uma%20obra.%20Poderiam%20me%20ajudar%3F%20%E2%9A%A1" target="_blank">
+              <button class="btn-contato-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Entre em contato pelo
+                WhatsApp
+              </button>
+            </a>
           </div>
-
-          <!--Input do e-mail do cliente-->
-          <div class="input-container">
-            <i class="fa-regular fa-envelope"></i>
-            <input
-              type="email"
-              name="emailClient"
-              id="emailClient"
-              class="email-client"
-              placeholder="Digite o seu e-mail para um futuro retorno..."
-            />
+          <div class="contato-email">
+              <a href="mailto:eletroge@eletroge.com.br" target="_blank">
+              <button class="btn-contato-email">
+                <i class="fa-regular fa-envelope"></i>
+                Entre em contato pelo E-mail
+              </a>
+              </button>
           </div>
-
-          <!--Input mensagem do cliente-->
-          <div class="input-container">
-            <i class="fa-regular fa-message textarea-icon"></i>
-            <textarea
-              type="text"
-              name="mensageClient"
-              id="mensageClient"
-              class="mensageClient"
-              placeholder="Digite a sua mensagem..."
-            ></textarea>
-          </div>
-          <!--Button para envio do email-->
-          <div class="input-container">
-            <button
-              class="button-contact-us"
-              value="Enviar Mensagem"
-              onclick="sendEmail()"
-            >
-              Enviar Mensagem
-            </button>
-            <i class="fa-regular fa-paper-plane"></i>
-          </div>
-        </form>
+        </div>
       </div>
     </main>
     <div class="nav-mobile">

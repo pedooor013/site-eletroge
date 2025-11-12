@@ -56,18 +56,6 @@
         />
       </div>
     </footer>
-    <script>
-      const thumbnails = document.querySelectorAll(
-        "#thumbnail-images-obras img"
-      );
-      const mainImage = document.querySelector("#main-image-obras img");
-
-      thumbnails.forEach((thumb) => {
-        thumb.addEventListener("click", () => {
-          mainImage.src = thumb.src;
-        });
-      });
-    </script>
     <script src="../script.obras.js"></script>
   </body>
 </html>

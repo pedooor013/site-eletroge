@@ -4,8 +4,9 @@ export async function  getTodasObras(){
     const resultado = await pool.query(`
     SELECT obras.nome, obras.descricao, img.url, obras.id
     FROM obras
-    LEFT JOIN imagens img ON img.obra_id = obras.id
-    ORDER BY obras.id ASC
+    LEFT JOIN imagens img ON img.obra_id = obras.id 
+    AND img.eh_principal = true
+    ORDER BY obras.id ASC;
     `);
     return resultado.rows;
 };
@@ -15,6 +16,7 @@ export async function filtrarObrasFinalizadasModel(){
         SELECT obras.nome, obras.descricao, img.url, obras.id
         FROM obras
         LEFT JOIN imagens img ON img.obra_id = obras.id
+        AND img.eh_principal = true
         WHERE obras.progresso = 100
         ORDER BY obras.id ASC
         `);
@@ -26,6 +28,7 @@ export async function filtrarObrasEmAndamentoModel(){
         SELECT obras.nome, obras.descricao, img.url, obras.id
         FROM obras
         LEFT JOIN imagens img ON img.obra_id = obras.id
+        AND img.eh_principal = true
         WHERE obras.progresso <= 99
         ORDER BY obras.id ASC
         `);

@@ -943,106 +943,131 @@ img {
 }
 
 /* CSS contato-eletroge.html*/
-.body-contact-us{
-  background: url(img/img-principal.jpg);
-}
-.main-contact-us {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.div-form-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
-  margin: auto;
-  width: 50rem;
-  height: 42rem;
-  border: solid 0.1px #000;
-  border-radius: 1rem;
-  background-color: #fff;
-  box-shadow: 0 0.1rem 0.2rem 0.1rem rgb(0, 0, 0, 75%);
-  text-align: center;
-  & > h2 {
-    color: #111827;
-    padding-top: 2rem;
-  }
-  & > hr{
-    margin-top: auto;
-    width: 80%;
-    border: solid .1px #333;
-    margin-top: 3rem;
-    height: 0px;
-  }
-  & > form {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 80%;
-    height: 80%;
-    justify-content: center;
-    align-items: center;
 
-    & > .input-container {
-      position: relative;
-      width: 60%;
-      margin-top: 2rem;
-      > i {
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-      }
-      > input {
-        width: 100%;
-        padding: 1rem 1rem 1rem 3.5rem;
-        box-sizing: border-box;
-        font-size: 1rem;
-        border: solid 0.1rem rgba(51, 51, 51, 0.344);
-        border-radius: 0.5rem;
-        box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgb(51, 51, 51, 45%);
-      }
-      > button {
-        width: 100%;
-        padding: 1rem 1rem 1rem 3.5rem;
-        box-sizing: border-box;
-        font-size: 1rem;
-        border: solid 0.1rem rgba(51, 51, 51, 0.344);
-        border-radius: 0.5rem;
-        box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgb(51, 51, 51, 45%);
-        &:hover{
-          transition: .2s;
-          opacity: 85%;
-        }
-      }
-      > .textarea-icon {
-        top: 11%;
-      }
-      > textarea {
-        width: 100%;
-        height: 15rem;
-        padding: 1rem 1rem 1rem 3.5rem;
-        box-sizing: border-box;
-        resize: none;
-        border-radius: 0.5rem;
-        font-family: inherit;
-        font-size: 1rem;
-        border: solid 0.1rem rgba(51, 51, 51, 0.344);
-        border-radius: 0.5rem;
-        box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgb(51, 51, 51, 45%);
-      }
-      > .button-contact-us {
-        appearance: none;
-        background-color: #ffbf00;
-        color: #000;
-        border: none;
-      }
-    }
+/* ======== Centralizar o quadro de botões ======== */
+/* ======== Fundo da página (imagem de fundo) ======== */
+.body-contact-us {
+  background: url("img/img-principal.jpg") no-repeat center center;
+  background-size: cover;        /* ajusta a imagem para cobrir toda a tela */
+  background-attachment: fixed;  /* mantém o fundo fixo enquanto rola a página */
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-contact-us {
+  min-height: calc(100vh - 180px); /* considera o header e o footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ======== Quadro principal ======== */
+.div-contato-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 90%;
+  max-width: 480px;
+  padding: 2rem 1.5rem;
+
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.9); /* leve transparência */
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+/* ======== Título ======== */
+.div-contato-container h3 {
+  color: #111827;
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.div-contato-container hr {
+  width: 80%;
+  border: solid 0.5px #333;
+  margin: 1.5rem 0;
+}
+
+/* ======== Botões ======== */
+.opcoes-contato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+  width: 100%;
+}
+
+/* WhatsApp */
+.btn-contato-whatsapp {
+  width: 100%;
+  max-width: 350px;
+  padding: 1rem 1.5rem;
+  border-radius: 0.8rem;
+  border: none;
+  background-color: #25d366;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+.btn-contato-whatsapp:hover {
+  background-color: #20b85b;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Email */
+.btn-contato-email {
+  width: 100%;
+  max-width: 350px;
+  padding: 1rem 1.5rem;
+  border-radius: 0.8rem;
+  border: none;
+  background-color: #f4b400;
+  color: #111827;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.15);
+  & > a{
+    text-decoration: none;
+    color: #111827;                                               
   }
 }
+
+.btn-contato-email:hover {
+  background-color: #e0a800;
+    color: #000;                                               
+  transform: translateY(-2px);
+}
+
+/* Ícones */
+.opcoes-contato i {
+  font-size: 1.3rem;
+}
+
+/* ======== Responsividade ======== */
+@media (max-width: 600px) {
+  .div-contato-container {
+    width: 90%;
+    padding: 2rem 1rem;
+  }
+
+  .opcoes-contato button {
+    font-size: 1rem;
+  }
+}
+
 /*Ajustando responsividade*/
 
 /*index.html responsivo*/
