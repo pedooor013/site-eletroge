@@ -1,6 +1,7 @@
 import admModels from '../models/adm.models.js';
 import jwt from 'jsonwebtoken';
-import bcrypt from bcrypt;
+import "dotenv/config";
+import bcrypt from 'bcrypt';
 
 
 async function loginAdmController(req, res){
@@ -14,7 +15,7 @@ async function loginAdmController(req, res){
     }
 }
 
-function generateJWT(id){
+async function generateJWT(id){
     return jwt.sign({id},
         process.env.SECRET_JWT, 
         {expiresIn: 86400});
@@ -25,7 +26,7 @@ async function authLoginController(email, password){
     if(!user) throw new Error('Invalid user!');
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if(!isPasswordValid) throw new Error('Invalid user!');
-    const token = generateJWT(user.id);
+    const token = await generateJWT(user.id);
     return token;
 }
 
