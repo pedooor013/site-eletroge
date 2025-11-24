@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import obrasRoutes from './server/routes/obras.routes.js';
 import detalhesObrasRoutes from './server/routes/obrasDetalhes.routes.js';
-import servicesRoutes from './server/routes/services.routes.js';
+import servicosObras from './server/routes/servicos.routes.js';
+import admRoutes from './server/routes/adm.routes.js';
 dotenv.config();
 
 const app = express();
@@ -13,9 +14,10 @@ app.use(cors());
 
 app.use(express.static("public"));
 
+app.use('/eletroge', admRoutes);
 app.use('/eletroge', obrasRoutes);
 app.use('/eletroge', detalhesObrasRoutes);
-app.use('/eletroge', servicesRoutes);
+app.use('/eletroge', servicosObras);
 
 app.listen(PORT, () =>{
     console.log(`Servidor rodando em http://localhost:${PORT}`);
