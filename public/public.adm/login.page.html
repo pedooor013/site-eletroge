@@ -31,7 +31,7 @@
                 <img src="../img/logo-eletroge.png" width="200px" />
                 </div>
             </div>
-            <form action="" method="post">
+            <form>
                 <div class="row pt-3">
                 <label class="user-label" for="email-input">
                     Digite o seu e-mail:
@@ -62,11 +62,15 @@
 
                 <div class="row pt-3">
                 <button
-                    onclick="changeVisibilityPassword()"
+                    type="button"
                     class="btn btn-warning w-100"
+                    onclick="loginADM()"
                 >
                     Fazer Login
                 </button>
+                </div>
+                <div class="row pt-3">
+                <p id="message" class="text-danger"></p>
                 </div>
             </form>
             <div class="col-1"></div>
