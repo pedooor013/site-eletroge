@@ -34,13 +34,16 @@ async function createNewWorkModels({name, description, progress, arrServicesId, 
 };
 
 async function createRelationshipsWorkService(obraId, arrServicesId){
-    return new Promise((res,rej) =>{
+    try{
         for(countArrPosition = 0; countArrPosition < arrServicesId.length; countArrPosition++){
             pool.query(`
-                INSERT INTO obra_servico
-                `)
+                INSERT INTO obra_servico(obra_id, servico_id)
+                VALUES($1, $2)
+                `, [obraId], [arrServicesId[countArrPosition]]) 
+            };
+        }catch(err){
+            return console.error(err);
         }
-    })
 }
 
 export default{
