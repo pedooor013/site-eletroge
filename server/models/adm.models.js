@@ -28,11 +28,12 @@ async function createNewWorkModels({name, description, progress, arrServicesId, 
             
             await createRelationshipsWorkService(obraId, arrServicesId);
 
+            await createRelationshipsWorkImage(obraId, arrImage);
+
             return obraId;
 
         }catch(err){
-            console.error(err);
-            throw err;
+            throw new Error("Erro ao cadastrar a obra!")
         }
 };
 
@@ -47,7 +48,30 @@ async function createRelationshipsWorkService(obraId, arrServicesId){
         }catch(err){
             throw new Error("Erro ao criar um relacionamento entre a obra e os serviços!");
         }
+    }
+    
+async function createRelationshipsWorkImage(obraId, arrImage){
+    try{
+    for(countArrPosition = 0; countArrPosition < arrImage.length; countArrPosition++){
+    
+        if(countArrPosition == 0){
+            await pool.query(`
+                INSERT INTO imagens(obra_id, url, eh_principal)
+                VALUES($1, $2, true)
+                `, [obraId, arrImage[countArrPosition]]); 
+        }
+        else{
+            await pool.query(`
+                INSERT INTO imagens(obra_id, url)
+                VALUES($1, $2)
+                `, [obraId, arrImage[countArrPosition]]); 
+            };
+        }
+    }catch(err){
+        throw new Error("Erro ao criar um relacionamento entre a obra e os serviços!");
+    }
 }
+
 
 
 
