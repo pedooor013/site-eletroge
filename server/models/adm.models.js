@@ -17,57 +17,30 @@ async function findUserByEmailModels(email){
     })
 }
 
-async function createNewWorkModels(newWork){
-    const {workName, workDescription, workProgress, workService, workImg} = newWork;
-    
-    pool.query(
-        `
-        INSERT INTO obras(nome, descricao, progresso)
-        VALUES($1, $2, $3);
-        `, [workName], [workDescription], [workProgress],
-        function(err){
-            if(err){
-                rej(err);
-            }else{
-                res({id: this.lastID, ...newWork})
-            }
-        }    
-    )
-    const workId = res.id;
+async function createNewWorkModels({name, description, progress, arrServicesId, arrImage}){
+    try{
+        pool.query(`
+            INSERT INTO obras(nome, descricao, progresso)
+            VALUES($1, $2, $3)
+            RETURNING id;
+            `, [name], [description], [progress]);
+            const obraId = result.rows[0].id;
+            
+            await createRelationshipsWorkService(obraId, arrServicesId);
 
-    await createNewWorkImagesModels(workId, workImg);
-    await createNewWorkServiceModels(workId, workService);
-
-    
-}
-
-async function createNewWorkImagesModels(workId, workImgs){
-    if(Array.isArray(workImgs) && workImgs.length > 0){
-        for(const imgs of workImgs){
-            pool.query(`
-                INSERT INTO imagens (url, obra_id, eh_principal)
-                VALUES($1, $2, $3);
-                `, [imgs.url, workId, imgs.principal || 0],
-                function(err){
-                    if(err){
-                        if(err){
-                            rej(err);
-                        }
-                    }
-                }
-            );
+        }catch(err){
+            return console.error(err);
         }
-    }
-}
+};
 
-async function createNewWorkServiceModels(workId, workService){
-    if(Array.isArray(workService) && workService.length > 0){
-        for(const services of workService){
+async function createRelationshipsWorkService(obraId, arrServicesId){
+    return new Promise((res,rej) =>{
+        for(countArrPosition = 0; countArrPosition < arrServicesId.length; countArrPosition++){
             pool.query(`
-                INSERT INTO obra_servico()
+                INSERT INTO obra_servico
                 `)
         }
-    }
+    })
 }
 
 export default{
