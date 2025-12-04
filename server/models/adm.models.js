@@ -19,32 +19,37 @@ async function findUserByEmailModels(email){
 
 async function createNewWorkModels({name, description, progress, arrServicesId, arrImage}){
     try{
-        pool.query(`
+        const result = await pool.query(`
             INSERT INTO obras(nome, descricao, progresso)
             VALUES($1, $2, $3)
             RETURNING id;
-            `, [name], [description], [progress]);
+            `, [name, description, progress]);
             const obraId = result.rows[0].id;
             
             await createRelationshipsWorkService(obraId, arrServicesId);
 
+            return obraId;
+
         }catch(err){
-            return console.error(err);
+            console.error(err);
+            throw err;
         }
 };
 
 async function createRelationshipsWorkService(obraId, arrServicesId){
     try{
         for(countArrPosition = 0; countArrPosition < arrServicesId.length; countArrPosition++){
-            pool.query(`
+            await pool.query(`
                 INSERT INTO obra_servico(obra_id, servico_id)
                 VALUES($1, $2)
-                `, [obraId], [arrServicesId[countArrPosition]]) 
+                `, [obraId, arrServicesId[countArrPosition]]); 
             };
         }catch(err){
-            return console.error(err);
+            throw new Error("Erro ao criar um relacionamento entre a obra e os serviços!");
         }
 }
+
+
 
 export default{
     findUserByEmailModels
