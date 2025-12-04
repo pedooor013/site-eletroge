@@ -30,6 +30,33 @@ async function authLoginController(email, password){
     return token;
 }
 
+async function createNewWorkController(req, res){
+    try{
+        const {name, description, progress, arrServicesId, arrImage} = req.body;
+
+        const obraId = await admModels.createNewWorkModels({name, description, progress, arrServicesId, arrImage});
+
+        if(!obraId){
+            return res.status(500).json({
+                Error: "Erro ao criar a obra. Nenhum ID retornado!"
+            });
+        };
+
+        return res.status(201).json({
+            message: "Obra cadastrada com sucesso!",
+            obraId: obraId
+        })
+    }catch(err){
+        console.error("Erro no Controller:", err);
+
+        return res.status(500).json({
+            error: "Erro interno ao criar obra.",
+            detalhe: err.message
+        });
+    }
+
+}
 export default{
-    loginAdmController
+    loginAdmController,
+    createNewWorkController
 }

@@ -76,5 +76,6 @@ async function createRelationshipsWorkImage(obraId, arrImage){
 
 
 export default{
-    findUserByEmailModels
+    findUserByEmailModels,
+    createNewWorkModels
 }
