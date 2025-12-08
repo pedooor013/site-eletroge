@@ -112,7 +112,7 @@
             class="input-group input-group-text"
             type="text"
             name="work-name"
-            id="workName"
+            id="workDescription"
             required
         />
         </div>
@@ -125,7 +125,7 @@
             class="input-group-text"
             type="number"
             name=""
-            id=""
+            id="workProgress"
             min="0"
             max="100"
             required
@@ -211,7 +211,7 @@
         <div class="row justify-content-center mt-4">
             <div class="col-10">
                 <div class="mb-3 text-center">
-                    <input type="button" onclick="createNewWork" class="btn btn-warning border" value="Cadastrar a Obra">
+                    <input type="button" onclick="createNewWork()" class="btn btn-warning border" value="Cadastrar a Obra">
                 </div>
             </div>
         </div>
@@ -273,6 +273,6 @@ function rebuildInputFiles() {
 }
 </script>
 
-
+<script src="adm.page.js"></script>
 </body>
 </html>

@@ -1,15 +1,30 @@
+// upload.js
 import multer from "multer";
+import fs from "fs";
+import cloudinary from "./cloudinary.js";
 
-import { CloudinaryStorage } from "multer-storage-cloudinary";
-import cloudinary from  "./cloudinary.js";
+const upload = multer({ dest: "uploads/" });
 
-const storage = CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-        folder: "eletroge"
-    },
-});
+export const uploadImagesMiddleware = upload.array("imagens", 20);
 
-const upload = multer({storage});
+export const uploadImagesController = async (req, res) => {
+  try {
+    const urls = [];
 
-export default upload;
+    for (const file of req.files) {
+      const result = await cloudinary.uploader.upload(file.path);
+
+      urls.push({
+        url: result.secure_url
+      });
+
+      fs.unlinkSync(file.path); // apaga o arquivo temporário
+    }
+
+    res.json({ arrImage: urls });
+
+  } catch (err) {
+    console.error("Erro Cloudinary:", err);
+    res.status(500).json({ error: "Erro ao enviar imagens" });
+  }
+};
