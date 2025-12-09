@@ -32,14 +32,6 @@ async function loginADM() {
 
 // ================== IMAGENS =========================
 
-let selectedFiles = [];  // AQUI controla os arquivos reais (SEM duplicação!)
-
-document.getElementById("send-img-work").addEventListener("change", function () {
-    selectedFiles = Array.from(this.files); 
-    updatePreview();
-});
-
-// Faz upload SOMENTE NO SUBMIT — não na hora de selecionar arquivos!
 async function uploadImages(files) {
     const formData = new FormData();
 
@@ -88,7 +80,7 @@ async function createNewWork() {
         arrServicesId: idService,
         arrImage: uploadedImages
     };
-
+    console.json({body})
     try {
         const response = await fetch(createNewWorkAPIRoute, {
             method: "POST",

@@ -18,73 +18,72 @@ async function carregarDetalhes(id) {
 function montarTela(dados) {
     const detalhes = document.getElementById('section-obras');
 
-    // imagem principal = primeira imagem do array
+    // --- CORRIGIR FORMATO DAS IMAGENS ---
+    dados.imagens = dados.imagens.map(img => {
+        try {
+            return JSON.parse(img).url; // pega a URL de dentro do JSON string
+        } catch {
+            return img.url ? img.url : img; // fallback
+        }
+    });
+
+    // imagem principal
     const imagemPrincipal = dados.imagens.length > 0 ? dados.imagens[0] : "";
 
     // montar thumbnails
     let thumbnailsHTML = "";
-    let contadorDeImagens = 0;
-    dados.imagens.forEach(img => {
-        if(contadorDeImagens != 0){
+    dados.imagens.forEach((img, i) => {
+        if (i !== 0) {
             thumbnailsHTML += `<img src="${img}" id="thumbnail-images-obras">`;
         }
-        contadorDeImagens++;
     });
 
     // montar serviços
     let servicosHTML = "";
     dados.servicos.forEach(serv => {
-        servicosHTML += `
-            <ol>${serv.nome} ${serv.descricao}</ol>
-        `;
+        servicosHTML += `<ol>${serv.nome} ${serv.descricao}</ol>`;
     });
 
     detalhes.innerHTML = `
         <h2 id="h2-nome-obra">${dados.nome}</h2>
         <hr />  
         <div id="content-obras">
-
             <div id="images-obras">
 
-            <div id="thumbnail-images-obras">
-                ${thumbnailsHTML}
-            </div>
-            
-            <div id="main-image-obras">
-            <img src="${imagemPrincipal}" id="main-image-obras">
-            </div>
+                <div id="thumbnail-images-obras">
+                    ${thumbnailsHTML}
+                </div>
+                
+                <div id="main-image-obras">
+                    <img src="${imagemPrincipal}" id="main-image-obras">
+                </div>
 
             </div>
 
             <div id="description-obras">
-
                 <progress value="${dados.progresso}" max="100"></progress>
-
                 <div id="tag-obras">
-
-                    <ul>
-                        ${servicosHTML}
-                    </ul>
+                    <ul>${servicosHTML}</ul>
                 </div>
-
                 <p id="span-description-obras">${dados.descricao}</p>
-
             </div>
 
         </div>
     `;
-        const thumbnails = document.querySelectorAll("#thumbnail-images-obras img");
+
+    // troca de miniatura pela principal
+    const thumbnails = document.querySelectorAll("#thumbnail-images-obras img");
     const mainImage = document.querySelector("#main-image-obras img");
 
     thumbnails.forEach((thumb) => {
         thumb.addEventListener("click", () => {
-            const trocaDeImg = mainImage.src;
+            const atual = mainImage.src;
             mainImage.src = thumb.src;
-            thumb.src = trocaDeImg;
-
+            thumb.src = atual;
         });
     });
 }
+
 
 
 
