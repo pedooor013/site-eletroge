@@ -219,11 +219,11 @@
     </div>
 <script>
 const inputFile = document.getElementById("send-img-work");
-let selectedFiles = []; // controla arquivos reais
+let selectedFiles = []; // lista real dos arquivos
 
+// Quando o usuário seleciona novas imagens
 inputFile.addEventListener("change", function (event) {
-    const files = Array.from(event.target.files);
-    selectedFiles = files; // salva lista atual
+    selectedFiles = Array.from(event.target.files); // substitui toda a lista
     updatePreview();
 });
 
@@ -254,24 +254,23 @@ function updatePreview() {
 
         reader.readAsDataURL(file);
     });
-
-    // reconstruir arquivos do input (obrigatório)
-    rebuildInputFiles();
 }
 
-// Remove uma imagem pelo índice
+// Remove uma imagem da lista
 function removeImage(index) {
     selectedFiles.splice(index, 1);
+    rebuildInputFiles();
     updatePreview();
 }
 
-// Recria a FileList dentro do input (técnica obrigatória)
+// Recria o FileList no input
 function rebuildInputFiles() {
-    const dataTransfer = new DataTransfer();
-    selectedFiles.forEach(file => dataTransfer.items.add(file));
-    inputFile.files = dataTransfer.files;
+    const dt = new DataTransfer();
+    selectedFiles.forEach(f => dt.items.add(f));
+    inputFile.files = dt.files;
 }
 </script>
+
 
 <script src="adm.page.js"></script>
 </body>

@@ -2,6 +2,7 @@ const loginAPIRoute = 'http://localhost:3000/eletroge/login';
 const createNewWorkAPIRoute = 'http://localhost:3000/eletroge/cadastrarObra';
 const uploadImagesAPIRoute = 'http://localhost:3000/eletroge/upload';
 
+// ================= LOGIN ============================
 async function loginADM() {
     const email = document.getElementById('email-input').value;
     const password = document.getElementById('password-input').value;
@@ -29,35 +30,33 @@ async function loginADM() {
     }
 }
 
-let uploadedImages = []; 
+// ================== IMAGENS =========================
 
-document.getElementById("send-img-work").addEventListener("change", async function () {
-    const files = this.files;
-    uploadedImages = await uploadImages(files);
+let selectedFiles = [];  // AQUI controla os arquivos reais (SEM duplicação!)
+
+document.getElementById("send-img-work").addEventListener("change", function () {
+    selectedFiles = Array.from(this.files); 
+    updatePreview();
 });
 
+// Faz upload SOMENTE NO SUBMIT — não na hora de selecionar arquivos!
 async function uploadImages(files) {
     const formData = new FormData();
 
-    for (let i = 0; i < files.length; i++) {
-        formData.append("imagens", files[i]);
+    for (let f of files) {
+        formData.append("imagens", f);
     }
 
-    try {
-        const response = await fetch(uploadImagesAPIRoute, {
-            method: "POST",
-            body: formData
-        });
+    const response = await fetch(uploadImagesAPIRoute, {
+        method: "POST",
+        body: formData
+    });
 
-        const result = await response.json();
-        console.log("Imagens enviadas:", result);
-
-        return result.imagens || []; 
-
-    } catch (err) {
-        console.error("Erro no upload: ", err);
-    }
+    const json = await response.json();
+    return json.arrImage;
 }
+
+// ================== CRIAR OBRA ======================
 
 async function createNewWork() {
     const workName = document.getElementById('workName').value;
@@ -70,14 +69,15 @@ async function createNewWork() {
     }
 
     const idService = [];
-
     document.querySelectorAll('input[name="work-service"]:checked')
         .forEach(cb => idService.push(Number(cb.id)));
 
-    if (uploadedImages.length === 0) {
+    if (selectedFiles.length === 0) {
         alert("Envie ao menos uma imagem!");
         return;
     }
+
+    const uploadedImages = await uploadImages(selectedFiles);
 
     const token = localStorage.getItem("token");
 
@@ -108,6 +108,10 @@ async function createNewWork() {
         }
 
         alert("Obra cadastrada com sucesso!");
+
+        selectedFiles = [];
+        document.getElementById("preview-area").innerHTML = "";
+        document.getElementById("send-img-work").value = "";
 
     } catch (err) {
         console.error("Erro ao cadastrar obra:", err);
