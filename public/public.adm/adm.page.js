@@ -64,8 +64,8 @@ async function createNewWork() {
     document.querySelectorAll('input[name="work-service"]:checked')
         .forEach(cb => idService.push(Number(cb.id)));
 
-    if (selectedFiles.length === 0) {
-        alert("Envie ao menos uma imagem!");
+    if (selectedFiles.length != 4) {
+        alert("Selecione 4 imagens!");
         return;
     }
 
