@@ -56,7 +56,21 @@ async function createNewWorkController(req, res){
     }
 
 }
+
+async function updatedWorkController(req, res){
+    const updatedWork = req.body;
+    const workId = req.params.id;
+    
+    try{
+        const response = await  admModels.updatedWorkModels(updatedWork, workId);
+
+        return res.send(response);
+    }catch(err){
+        res.status(400).send(err.message);
+    }
+}
 export default{
     loginAdmController,
-    createNewWorkController
+    createNewWorkController,
+    updatedWorkController
 }

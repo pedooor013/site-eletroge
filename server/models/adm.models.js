@@ -80,17 +80,88 @@ async function findWorkById(workId){
                 if(err){
                     rej(err);
                 }else{
-                    res(row)
+                    res(row.rows[0]);
                 }
             });
         });
 }
 
-async function updateWork()
+async function updatedWorkFieds(updatedWork, workId){
+        const fields = ['nome', 'descricao', 'progresso'];
+
+        let query = 'UPDATE obras SET ';
+        const values = [];
+
+        let index = 1;
+        const sets = [];
+
+        fields.forEach(field =>{
+            if(updatedWork[field] !== undefined){
+                sets.push(`${field} = $${index}`);
+                values.push(updatedWork[field]);
+                index++;
+            };
+        });
+
+        query += sets.join(', ') + ` WHERE id = $${index}`;
+        values.push(workId);
+
+        await pool.query(query, values);
+
+        return {query, values};
+        
+}
+
+async function updatedWorkImages(updatedWork, workId){
+
+    if (!Array.isArray(updatedWork.arrImage)) {
+        return { query: null, values: [] };
+    }
+
+    await pool.query(`DELETE FROM imagens WHERE obra_id = $1`, [workId]);
+
+    await createRelationshipsWorkImage(workId, updatedWork.arrImage);
+
+        return { 
+        ok: true,
+        totalInserted: updatedWork.arrImage.length
+    };
+    
+
+}
+
+async function updatedWorkServices(updatedWork, workId){
+        if (!Array.isArray(updatedWork.arrServicesId)) {
+        return { query: null, values: [] };
+    }
+
+    await pool.query(`DELETE FROM obra_servico WHERE obra_id = $1`, [workId]);
+
+    await createRelationshipsWorkService(workId, updatedWork.arrServicesId);
+
+    return { 
+        ok: true,
+        totalInserted: updatedWork.arrServicesId.length
+    };
+    
+}
+
+
+async function updatedWorkModels(updatedWork, workId){
+    const updatedWorkFields = await updatedWorkFieds(updatedWork, workId);
+    const updatedWorkImages = await updatedWorkImages(updatedWork, workId);
+
+    return{
+        fields: updatedWorkFields,
+        images: updatedWorkImages,
+        services: updatedWorkServices
+    };
+};
 
 
 
 export default{
     findUserByEmailModels,
-    createNewWorkModels
+    createNewWorkModels,
+    updatedWorkModels
 }
