@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/login', admController.loginAdmController);
 router.post('/cadastrarObra', admController.createNewWorkController);
 router.post("/upload", uploadImagesMiddleware, uploadImagesController);
-router.patch("/:id", admController.updatedWorkController)
+router.patch("/editarObra/:id", admController.updatedWorkController)
 
 
 

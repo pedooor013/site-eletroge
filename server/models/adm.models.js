@@ -86,77 +86,79 @@ async function findWorkById(workId){
         });
 }
 
-async function updatedWorkFieds(updatedWork, workId){
-        const fields = ['nome', 'descricao', 'progresso'];
+async function updatedWorkFieds(updatedWork, workId) {
+    // Mapeamento JSON -> Banco
+    const fieldMap = {
+        name: 'nome',
+        description: 'descricao',
+        progress: 'progresso'
+    };
 
-        let query = 'UPDATE obras SET ';
-        const values = [];
+    let query = 'UPDATE obras SET ';
+    const values = [];
+    let index = 1;
+    const sets = [];
 
-        let index = 1;
-        const sets = [];
+    for (const jsonKey in fieldMap) {
+        const dbField = fieldMap[jsonKey];
+        if (updatedWork[jsonKey] !== undefined) {
+            sets.push(`${dbField} = $${index}`);
+            values.push(updatedWork[jsonKey]);
+            index++;
+        }
+    }
 
-        fields.forEach(field =>{
-            if(updatedWork[field] !== undefined){
-                sets.push(`${field} = $${index}`);
-                values.push(updatedWork[field]);
-                index++;
-            };
-        });
+    if (sets.length === 0) {
+        return { skipped: true, reason: "Nenhum campo para atualizar" };
+    }
 
-        query += sets.join(', ') + ` WHERE id = $${index}`;
-        values.push(workId);
+    query += sets.join(', ') + ` WHERE id = $${index}`;
+    values.push(workId);
 
-        await pool.query(query, values);
+    await pool.query(query, values);
 
-        return {query, values};
-        
+    return { query, values };
 }
 
-async function updatedWorkImages(updatedWork, workId){
-
+async function updatedWorkImages(updatedWork, workId) {
     if (!Array.isArray(updatedWork.arrImage)) {
         return { query: null, values: [] };
     }
 
     await pool.query(`DELETE FROM imagens WHERE obra_id = $1`, [workId]);
-
     await createRelationshipsWorkImage(workId, updatedWork.arrImage);
 
-        return { 
+    return { 
         ok: true,
         totalInserted: updatedWork.arrImage.length
     };
-    
-
 }
 
-async function updatedWorkServices(updatedWork, workId){
-        if (!Array.isArray(updatedWork.arrServicesId)) {
+async function updatedWorkServices(updatedWork, workId) {
+    if (!Array.isArray(updatedWork.arrServicesId)) {
         return { query: null, values: [] };
     }
 
     await pool.query(`DELETE FROM obra_servico WHERE obra_id = $1`, [workId]);
-
     await createRelationshipsWorkService(workId, updatedWork.arrServicesId);
 
     return { 
         ok: true,
         totalInserted: updatedWork.arrServicesId.length
     };
-    
 }
 
-
-async function updatedWorkModels(updatedWork, workId){
+async function updatedWorkModels(updatedWork, workId) {
     const updatedWorkFields = await updatedWorkFieds(updatedWork, workId);
-    const updatedWorkImages = await updatedWorkImages(updatedWork, workId);
+    const updatedImages = await updatedWorkImages(updatedWork, workId);
+    const updatedServices = await updatedWorkServices(updatedWork, workId);
 
-    return{
+    return {
         fields: updatedWorkFields,
-        images: updatedWorkImages,
-        services: updatedWorkServices
+        images: updatedImages,
+        services: updatedServices
     };
-};
+}
 
 
 
