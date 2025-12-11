@@ -1,6 +1,8 @@
 const loginAPIRoute = 'http://localhost:3000/eletroge/login';
 const createNewWorkAPIRoute = 'http://localhost:3000/eletroge/cadastrarObra';
 const uploadImagesAPIRoute = 'http://localhost:3000/eletroge/upload';
+let currentWorkImages = [];
+let deletedWorkImages = []; 
 
 // ================= LOGIN ============================
 async function loginADM() {
@@ -110,16 +112,17 @@ async function createNewWork() {
     }
 }
 
+
 async function loadWorksIntoSelect() {
     const select = document.getElementById("select-work-to-edit");
-
+    
     const response = await fetch("http://localhost:3000/eletroge/obras");
     const works = await response.json();
-
+    
     works.forEach(work => {
         const option = document.createElement("option");
         option.value = work.id;
-        option.textContent = work.nome;
+        option.textContent = `${work.id} - ${work.nome}`;
         select.appendChild(option);
     });
 }
@@ -128,14 +131,17 @@ loadWorksIntoSelect();
 
 document.querySelector("form").addEventListener("submit", async (e) => {
     e.preventDefault();
-
+    
     const selectedId = document.getElementById("select-work-to-edit").value;
     if (!selectedId) return;
-
+    
     loadWorkDetails(selectedId);
 });
 
+let currentWorkId = null;
+
 async function loadWorkDetails(id) {    
+    currentWorkId = id;
     const response = await fetch(`http://localhost:3000/eletroge/obras/detalhes/${id}`);    
 
     console.log({response});
@@ -177,18 +183,138 @@ function renderWorkImages(images) {
     const previewArea = document.getElementById("preview-area");
     previewArea.innerHTML = "";
 
-    selectedFiles = []; // Reset file input state
+    currentWorkImages = images.map(img => ({ id: img.id, url: img.url })); // Salva id da imagem
 
-    if (!images || images.length === 0) return;
-
-    images.forEach(imgObj => {
+    currentWorkImages.forEach((imgObj, index) => {
         const wrapper = document.createElement("div");
         wrapper.classList.add("preview-wrapper");
 
-        const img = document.createElement("img");
-        img.src = imgObj.url;
+        wrapper.innerHTML = `
+            <img src="${imgObj.url}" />
+            <div class="remove-btn" onclick="removeExistingImage(${index})">×</div>
+        `;
 
-        wrapper.appendChild(img);
         previewArea.appendChild(wrapper);
     });
 }
+
+function removeExistingImage(index) {
+    deletedWorkImages.push(currentWorkImages[index]); // salva imagens removidas
+    currentWorkImages.splice(index, 1);
+    renderWorkImages(currentWorkImages);
+}
+
+
+async function updateWork(workId) {
+    const token = localStorage.getItem("token");
+
+    const name = document.getElementById('workName').value;
+    const description = document.getElementById('workDescription').value;
+    const progress = document.getElementById('workProgress').value;
+
+    const selectedServiceIds = [];
+    document.querySelectorAll('input[name="work-service"]:checked')
+        .forEach(cb => selectedServiceIds.push(Number(cb.id)));
+
+    let uploadedImages = null;
+    if (selectedFiles.length > 0) {
+        uploadedImages = await uploadImages(selectedFiles);
+    }
+
+    const updateBody = {};
+
+    if (name.trim()) updateBody.name = name;
+    if (description.trim()) updateBody.description = description;
+    if (progress !== "") updateBody.progress = Number(progress);
+
+    updateBody.arrServicesId = selectedServiceIds;
+    updateBody.remainingImages = currentWorkImages;   // imagens que ficaram
+    updateBody.deletedImages = deletedWorkImages;     // imagens removidas
+
+    if (uploadedImages !== null) {
+        updateBody.newImages = uploadedImages;
+    }
+
+    if (Object.keys(updateBody).length === 0) {
+        alert("Nothing to update!");
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3000/eletroge/editarObra/${workId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(updateBody)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            alert(result.message || "Failed to update work.");
+            return;
+        }
+
+        alert("Work successfully updated!");
+        location.reload();
+
+    } catch (err) {
+        console.error("Error updating work:", err);
+    }
+}
+
+        let workImages = []; // imagens carregadas do banco
+
+        function renderExistingImages() {
+            const previewArea = document.getElementById("preview-area");
+            previewArea.innerHTML = ""; // limpa tudo
+
+            workImages.forEach((imgObj, index) => {
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("preview-wrapper");
+
+            wrapper.innerHTML = `
+                <img src="${imgObj.url}" />
+                <div class="remove-btn" onclick="removeExistingImage(${index})">×</div>
+            `;
+
+            previewArea.appendChild(wrapper);
+            });
+        }
+
+        // Remover imagem existente da obra
+        function removeExistingImage(index) {
+            workImages.splice(index, 1);
+            renderExistingImages(); // renderiza de novo
+        }
+
+        function updatePreview() {
+            renderExistingImages(); // mantém as imagens do banco no preview
+
+            const previewArea = document.getElementById("preview-area");
+
+            selectedFiles.forEach((file, index) => {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                const wrapper = document.createElement("div");
+                wrapper.classList.add("preview-wrapper");
+
+                const img = document.createElement("img");
+                img.src = e.target.result;
+
+                const removeBtn = document.createElement("div");
+                removeBtn.classList.add("remove-btn");
+                removeBtn.innerHTML = "×";
+                removeBtn.onclick = () => removeImage(index);
+
+                wrapper.appendChild(img);
+                wrapper.appendChild(removeBtn);
+                previewArea.appendChild(wrapper);
+            };
+
+            reader.readAsDataURL(file);
+            });
+        }
