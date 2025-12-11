@@ -109,3 +109,86 @@ async function createNewWork() {
         console.error("Erro ao cadastrar obra:", err);
     }
 }
+
+async function loadWorksIntoSelect() {
+    const select = document.getElementById("select-work-to-edit");
+
+    const response = await fetch("http://localhost:3000/eletroge/obras");
+    const works = await response.json();
+
+    works.forEach(work => {
+        const option = document.createElement("option");
+        option.value = work.id;
+        option.textContent = work.nome;
+        select.appendChild(option);
+    });
+}
+
+loadWorksIntoSelect();
+
+document.querySelector("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const selectedId = document.getElementById("select-work-to-edit").value;
+    if (!selectedId) return;
+
+    loadWorkDetails(selectedId);
+});
+
+async function loadWorkDetails(id) {    
+    const response = await fetch(`http://localhost:3000/eletroge/obras/detalhes/${id}`);    
+
+    console.log({response});
+
+    if (response.status !== 200) {
+        alert("Error loading work details");
+        return;
+    }
+
+    const work = (await response.json())[0]; // API returns array
+
+    console.log("WORK RECEIVED:", work);
+
+    // === SIMPLE FIELDS ===
+    document.getElementById("workName").value = work.nome || "";
+    document.getElementById("workDescription").value = work.descricao || "";
+    document.getElementById("workProgress").value = work.progresso || 0;
+
+    // === SERVICES ===
+    checkWorkServices(work.servicos);
+
+    // === IMAGES ===
+    renderWorkImages(work.imagens);
+}
+
+function checkWorkServices(services) {
+    // Reset all checkboxes first
+    document.querySelectorAll('input[name="work-service"]').forEach(cb => cb.checked = false);
+
+    if (!services || services.length === 0) return;
+
+    services.forEach(service => {
+        const checkbox = document.getElementById(service.id || service.service_id);
+        if (checkbox) checkbox.checked = true;
+    });
+}
+
+function renderWorkImages(images) {
+    const previewArea = document.getElementById("preview-area");
+    previewArea.innerHTML = "";
+
+    selectedFiles = []; // Reset file input state
+
+    if (!images || images.length === 0) return;
+
+    images.forEach(imgObj => {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("preview-wrapper");
+
+        const img = document.createElement("img");
+        img.src = imgObj.url;
+
+        wrapper.appendChild(img);
+        previewArea.appendChild(wrapper);
+    });
+}

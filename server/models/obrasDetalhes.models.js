@@ -10,6 +10,7 @@ export async function exibirDadosObraModels(id){
     o.progresso,
     ARRAY_AGG(
         DISTINCT jsonb_build_object(
+            'id', s.id,
             'nome', s.nome,
             'descricao', s.descricao
         )
