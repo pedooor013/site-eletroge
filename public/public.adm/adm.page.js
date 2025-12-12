@@ -26,6 +26,8 @@ async function loginADM() {
         localStorage.setItem("token", data.token);
         document.getElementById("message").innerHTML = "Login realizado com sucesso!";
 
+        window.location.href = "dashboard.adm.html";
+
     } catch (err) {
         console.error(err);
         document.getElementById("message").innerHTML = "Erro ao conectar com o servidor";
