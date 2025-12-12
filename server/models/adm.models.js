@@ -159,11 +159,24 @@ async function updatedWorkModels(updatedWork, workId) {
         services: updatedServices
     };
 }
-
+async function deleteWorkModel(workId){
+    return new Promise((res, rej) =>{
+        pool.query(`
+            DELETE FROM obras WHERE id = $1
+            `, [workId], function(err){
+                if(err){
+                    rej(err);
+                }else{
+                    res({message: `Obra com o ID ${workId} foi deletada com sucesso!`});
+                }
+            })
+    })
+}
 
 
 export default{
     findUserByEmailModels,
     createNewWorkModels,
-    updatedWorkModels
+    updatedWorkModels,
+    deleteWorkModel
 }

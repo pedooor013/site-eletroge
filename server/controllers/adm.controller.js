@@ -69,8 +69,19 @@ async function updatedWorkController(req, res){
         res.status(400).send(err.message);
     }
 }
+
+async function deleteWorkController(req, res){
+    try{
+        const workId = req.params.id;
+        const response = await admModels.deleteWorkModel(workId);
+        return res.send(response);
+    }catch(err){
+        res.status(400).send(err.message);
+    }
+}
 export default{
     loginAdmController,
     createNewWorkController,
-    updatedWorkController
+    updatedWorkController,
+    deleteWorkController
 }
