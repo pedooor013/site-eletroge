@@ -318,3 +318,13 @@ async function updateWork(workId) {
             reader.readAsDataURL(file);
             });
         }
+
+async function deleteWork(workId){
+    try{
+        const response = await fetch(`http://localhost:3000/eletroge/deletarObra/${workId}`);
+
+
+    }catch(err){
+        
+    }
+}

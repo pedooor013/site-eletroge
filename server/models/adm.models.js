@@ -72,19 +72,6 @@ async function createRelationshipsWorkImage(obraId, arrImage){
     }
 }
 
-async function findWorkById(workId){
-    return new Promise((res, rej) =>{
-        pool.query(`
-            SELECT * FROM obras WHERE id = $1;
-            `, [workId], (err, row)=>{
-                if(err){
-                    rej(err);
-                }else{
-                    res(row.rows[0]);
-                }
-            });
-        });
-}
 
 async function updatedWorkFieds(updatedWork, workId) {
     // Mapeamento JSON -> Banco
