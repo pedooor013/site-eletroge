@@ -319,12 +319,25 @@ async function updateWork(workId) {
             });
         }
 
-async function deleteWork(workId){
-    try{
-        const response = await fetch(`http://localhost:3000/eletroge/deletarObra/${workId}`);
+async function deleteWork(workId) {
+    try {
+        const response = await fetch(`http://localhost:3000/eletroge/deletarObra/${workId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
 
+        try {
+            return await response.json();
+        } catch {
+            window.alert('Obra deletada com sucesso');
+            return { message: "Obra deletada com sucesso." };
+        }
 
-    }catch(err){
+    } catch (error) {
+        console.error("Erro ao deletar obra:", error);
+        throw error;
         
     }
 }

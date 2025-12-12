@@ -139,7 +139,7 @@
         modal.show();
     }
 
-    document.getElementById("confirmDeleteBtn").addEventListener("click", async () => {
+document.getElementById("confirmDeleteBtn").addEventListener("click", async () => {
     const obraId = document.getElementById("select-work-to-edit").value;
 
     if (!obraId) {
@@ -149,16 +149,29 @@
 
     try {
         const response = await deleteWork(obraId);
-        console.log("Obra deletada:", response);
+
+        // Mensagem personalizada caso a API retorne algo
+        if (response?.message) {
+            alert(response.message);
+        } else {
+            alert("Obra deletada com sucesso!");
+        }
+
+        // Fecha o modal
+        const modalEl = document.getElementById("confirmDeleteModal");
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
+
+        // Recarrega a página após 1 segundo
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
+
     } catch (error) {
         console.error("Erro ao deletar obra:", error);
-        alert("Erro ao deletar a obra.");
+        alert("Erro ao deletar a obra: " + error.message);
         return;
     }
-
-    const modalEl = document.getElementById('confirmDeleteModal');
-    const modal = bootstrap.Modal.getInstance(modalEl);
-    modal.hide();
 });
 
     </script>
