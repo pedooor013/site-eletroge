@@ -1,4 +1,3 @@
-// upload.js
 import multer from "multer";
 import fs from "fs";
 import cloudinary from "./cloudinary.js";
