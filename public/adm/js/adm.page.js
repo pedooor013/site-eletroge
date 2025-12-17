@@ -1,6 +1,3 @@
-const loginAPIRoute = 'http://localhost:3000/eletroge/login';
-const createNewWorkAPIRoute = 'http://localhost:3000/eletroge/cadastrarObra';
-const uploadImagesAPIRoute = 'http://localhost:3000/eletroge/upload';
 let currentWorkImages = [];
 let deletedWorkImages = []; 
 
