@@ -1,23 +1,17 @@
 import { loginAdmApi } from '../api/loginAdm.api.js';
 
 
-export async function loginAdmService(userEmail, userPassword){
-    if(userEmail == null){
-        return "Preencha o campo de e-mail!";
-    }else if(userPassword == null){
-        return "Preencha o campo de senha!";
-    };
+export async function loginAdmService(email, password){
     try{
-        const result = await loginAdmApi(userEmail, userPassword);
-        const data = await result.json();
+        const response = await loginAdmApi(email, password);
         
-        if(!result.ok){
-            throw new Error(data.message || "Erro ao realizar login");
+        if(!response.ok){
+            throw new Error(response.message || "Erro ao realizar login");
         }
         
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('token', response.token);
 
-        return data;
+        return response;
     }catch(err){
         throw err; 
     }

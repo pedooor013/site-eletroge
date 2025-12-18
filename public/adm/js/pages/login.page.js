@@ -7,15 +7,14 @@ loginButton.addEventListener("click", () => {
 })
 
 async function loginAdmPage(){
-    const userEmail = document.getElementById('email-input').value;    
-    const userPassword = document.getElementById('password-input').value;
+    const email = document.getElementById('email-input').value;    
+    const password = document.getElementById('password-input').value;
     
     document.getElementById('message').innerHTML = "";
-    try{
-        
+    try{        
         const test = await loginAdmService(
-            userEmail, 
-            userPassword
+            email, 
+            password
         );
 
         console.log({test});
