@@ -1,18 +1,23 @@
-import { loginAdmApi } from '../api/loginAdm.api.js';
+import { loginApi } from '../api/login.api.js';
+import { saveToken } from '../utils/auth.utils.js';
 
+export async function loginService(email, password) {
+    try {
+        const result = await loginApi(email, password);
 
-export async function loginAdmService(email, password){
-    try{
-        const response = await loginAdmApi(email, password);
-        
-        if(!response.ok){
-            throw new Error(response.message || "Erro ao realizar login");
+        if (!result.ok) {
+            throw new Error(result.message || "Erro ao realizar login");
         }
-        
-        localStorage.setItem('token', response.token);
 
-        return response;
-    }catch(err){
-        throw err; 
+        // Salva o token no localStorage
+        saveToken(result.token);
+
+        return {
+            success: true,
+            message: "Login realizado com sucesso!",
+            token: result.token
+        };
+    } catch (err) {
+        throw err;
     }
-};  
+}

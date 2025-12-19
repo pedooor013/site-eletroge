@@ -1,0 +1,22 @@
+import { API_ROUTES } from '../config/api.routes.js';
+
+export async function loginApi(email, password) {
+    try {
+        const response = await fetch(API_ROUTES.LOGIN, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        return {
+            ...data,
+            ok: response.ok,
+            status: response.status
+        };
+    } catch (err) {
+        console.error("Erro na API de login:", err);
+        throw new Error('Erro de conexão com o servidor');
+    }
+}
