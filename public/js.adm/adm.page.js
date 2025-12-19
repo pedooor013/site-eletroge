@@ -37,7 +37,7 @@ async function loginADM() {
 // ================== IMAGENS =========================
 async function uploadImages(files) {
 try {
-    console.log("⬆️ Iniciando upload", files);
+
     const formData = new FormData();
     for (let f of files) {
     formData.append("imagens", f);
@@ -46,9 +46,9 @@ try {
     method: "POST",
     body: formData,
     });
-    console.log("📡 resposta do upload:", response);
+
     const json = await response.json();
-    console.log("✅ retorno upload:", json);
+
     return json.arrImage;
 } catch (err) {
     console.error("❌ erro no uploadImages:", err);
@@ -84,13 +84,13 @@ currentWorkId = id;
 const response = await fetch(
     `http://localhost:3000/eletroge/obras/detalhes/${id}`
 );
-console.log({ response });
+
 if (response.status !== 200) {
         alert("Error loading work details");
         return;
 }
 const work = (await response.json())[0]; // API returns array
-console.log("WORK RECEIVED:", work);
+
 // === SIMPLE FIELDS ===
 document.getElementById("workName").value = work.nome || "";
 document.getElementById("workDescription").value = work.descricao || "";
@@ -247,7 +247,7 @@ try {
 }
 }
 async function createNewWork() {
-console.log("ENTREIIIIIIIIIIIIIII");
+
 const workName = document.getElementById("workName").value;
 const workDescription = document.getElementById("workDescription").value;
 const workProgress = document.getElementById("workProgress").value;
@@ -271,7 +271,7 @@ let uploadedImages = null;
 if (selectedFiles.length > 0) {
     uploadedImages = await uploadImages(selectedFiles);
 }
-console.log({ uploadedImages });
+
 const body = {
     name: workName,
     description: workDescription,
@@ -279,7 +279,7 @@ const body = {
     arrServicesId: idService,
     arrImage: uploadedImages,
 };
-console.log({ body });
+
 try {
     const response = await fetch(createNewWorkAPIRoute, {
     method: "POST",
