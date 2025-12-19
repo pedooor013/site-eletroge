@@ -38,11 +38,11 @@ async function filtrarObrasFinalizadas(){
         const resposta = await fetch(URLObrasFinalizadas);
         if(resposta.status === 200){
             obras = await resposta.json();
-            console.log({obras});
+
         }
     mostrarCards(obras);
     }catch(err){
-    console.log("Erro ao carregar os produtos: " , err);
+
     }
 }
 
@@ -50,14 +50,14 @@ async function filtrarObrasEmAndamento(){
     try{
         let obras;
         const resposta = await fetch(URLObrasEmAndamento);
-        console.log(resposta)
+
         if(resposta.status === 200){
             obras = await resposta.json();
-            console.log(obras);
+
         }
     mostrarCards(obras);
     }catch(err){
-    console.log("Erro ao carregar os produtos: " , err);
+
     }
 }
 
@@ -67,11 +67,11 @@ try{
     const resposta = await fetch(URLTodasObras);
     if (resposta.status === 200){
         obras = await resposta.json();
-        console.log(obras)
+
     }
     mostrarCards(obras);
 }catch(err){
-    console.log("Erro ao carregar os produtos: " , err);
+
     }
 }
 

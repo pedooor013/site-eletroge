@@ -21,7 +21,7 @@ function initCreateWorkPage() {
 // Handler de seleção de imagens
 async function handleImageSelection(event) {
     selectedFiles = Array.from(event.target.files);
-    console.log("📸 Imagens selecionadas:", selectedFiles);
+
     await updatePreview();
 }
 
@@ -45,7 +45,7 @@ function removeImage(index) {
 // Handler de criação da obra
 async function handleCreateWork() {
     try {
-        console.log("🚀 Iniciando criação da obra...");
+
         
         // ✅ MOSTRA LOADING
         const createButton = document.getElementById('create-work-button');
@@ -58,7 +58,7 @@ async function handleCreateWork() {
         const workDescription = document.getElementById('workDescription').value;
         const workProgress = document.getElementById('workProgress').value;
 
-        console.log("📝 Dados coletados:", { workName, workDescription, workProgress });
+
 
         // Valida progresso
         if (workProgress > 100 || workProgress < 0) {
@@ -73,7 +73,7 @@ async function handleCreateWork() {
         document.querySelectorAll('input[name="work-service"]:checked')
             .forEach(cb => idService.push(Number(cb.id)));
 
-        console.log("🔧 Serviços selecionados:", idService);
+
 
         // Valida número de imagens
         if (!validateImageCount(selectedFiles, 4)) {
@@ -83,13 +83,13 @@ async function handleCreateWork() {
             return;
         }
 
-        console.log("📤 Iniciando upload das imagens...");
-        console.log("📤 selectedFiles:", selectedFiles);
+
+
 
         // Faz upload das imagens
         const uploadedImages = await uploadImagesService(selectedFiles);
 
-        console.log("✅ Upload concluído! Imagens:", uploadedImages);
+
 
         // ✅ ATUALIZA TEXTO DO BOTÃO
         createButton.textContent = 'Cadastrando obra...';
@@ -103,7 +103,7 @@ async function handleCreateWork() {
             arrImage: uploadedImages
         };
 
-        console.log("📦 Dados da obra montados:", workData);
+
 
         // Cria a obra
         const result = await createWorkService(workData);

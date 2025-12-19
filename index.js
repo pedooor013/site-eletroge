@@ -20,29 +20,29 @@ app.use(cors({
 
 // ✅ LOG COMPLETO DE REQUISIÇÕES E RESPOSTAS
 app.use((req, res, next) => {
-    console.log('===================');
-    console.log(`📨 REQUISIÇÃO: ${req.method} ${req.url}`);
-    console.log(`📨 Origin: ${req.headers.origin}`);
-    console.log(`📨 Content-Type: ${req.headers['content-type']}`);
-    console.log('===================');
+
+
+
+
+
     
     // ✅ LOG DA RESPOSTA
     const originalSend = res.send;
     const originalJson = res.json;
     
     res.send = function(data) {
-        console.log('📤 RESPOSTA ENVIADA (send):');
-        console.log('📤 Status:', res.statusCode);
-        console.log('📤 Data:', typeof data === 'string' ? data.substring(0, 200) : data);
-        console.log('===================');
+
+
+
+
         originalSend.call(this, data);
     };
     
     res.json = function(data) {
-        console.log('📤 RESPOSTA ENVIADA (json):');
-        console.log('📤 Status:', res.statusCode);
-        console.log('📤 Data:', data);
-        console.log('===================');
+
+
+
+
         originalJson.call(this, data);
     };
     
@@ -60,5 +60,5 @@ app.use('/eletroge', detalhesObrasRoutes);
 app.use('/eletroge', servicosObras);
 
 app.listen(PORT, () =>{
-    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+
 });
