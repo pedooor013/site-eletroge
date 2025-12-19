@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    connect-src 'self' http://localhost:3000 https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://res.cloudinary.com; 
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; 
+    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; 
+    img-src 'self' data: https: http:; 
+    font-src 'self' https://cdnjs.cloudflare.com;
+">    <title>Edição de Obras</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <style>
+        .preview-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        .preview-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .remove-btn {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        .preview-wrapper:hover .remove-btn {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <nav class="navbar navbar-expand-lg bg-warning">
+        <div class="container">
+            <a class="navbar-brand text-dark fw-bold" href="dashboard.adm.html">
+                <img src="../img/logo-eletroge.png" width="100px" />
+            </a>
+
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-semibold" href="cadastrarObra.adm.html">
+                            Cadastrar Obra
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-semibold" href="editarObra.adm.html">
+                            Editar Obras
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-semibold" href="deletarObra.adm.html">
+                            Deletar Obras
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h3 class="text-center mt-2">Edição de obras</h3>
+        <hr />
+        <div class="row">
+            <div class="col-8">
+                <form action="" method="get">
+                    <label for="select-work-to-edit"><h4>Selecione uma obra</h4></label><br />
+                    <div class="d-flex gap-2">
+                        <select
+                            name="select-work-to-edit"
+                            id="select-work-to-edit"
+                            class="form-select"
+                        >
+                            <option value="">Selecione...</option>
+                        </select>
+                        <input
+                            type="submit"
+                            value="Selecionar"
+                            class="btn btn-warning border"
+                        />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-4">
+                <label for="work-name"><strong>Nome da obra</strong></label><br />
+                <input
+                    class="input-group-text"
+                    type="text"
+                    name="work-name"
+                    id="workName"
+                    required
+                />
+            </div>
+            <div class="col-8">
+                <label for="work-description"><strong>Descrição da obra</strong></label><br />
+                <input
+                    class="input-group input-group-text"
+                    type="text"
+                    name="work-name"
+                    id="workDescription"
+                    required
+                />
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-4">
+                <label for="work-progress"><strong>Progresso</strong></label><br />
+                <input
+                    class="input-group-text"
+                    type="number"
+                    name=""
+                    id="workProgress"
+                    min="0"
+                    max="100"
+                    required
+                />
+            </div>
+            <div class="col-8">
+                <p><strong>Selecione os serviços contidos na obra</strong></p>
+                <div class="m-1">
+                    <input type="checkbox" name="work-service" id="1" />
+                    <label for="work-service">
+                        Alta Tensão
+                        <i class="fa-solid fa-bolt" style="color: #ffd43b"></i>
+                    </label>
+                </div>
+                <div class="m-1">
+                    <input type="checkbox" name="work-service" id="2" />
+                    <label for="work-service">
+                        SPDA
+                        <i class="fa-solid fa-plug" style="color: #ffd43b"></i>
+                    </label><br />
+                </div>
+                <div class="m-1">
+                    <input type="checkbox" name="work-service" id="3" />
+                    <label for="work-service">
+                        Predial
+                        <i class="fa-solid fa-building" style="color: #ffd43b"></i>
+                    </label>
+                </div>
+                <div class="m-1">
+                    <input type="checkbox" name="work-service" id="4" />
+                    <label for="work-service">
+                        Industrial
+                        <i class="fa-solid fa-industry" style="color: #ffd43b"></i>
+                    </label>
+                </div>
+                <div class="m-1">
+                    <input type="checkbox" name="work-service" id="5" />
+                    <label for="work-service">
+                        Quadros Elétricos
+                        <i class="fa-solid fa-hexagon-nodes-bolt" style="color: #ffd43b"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-10">
+                <div class="mb-3">
+                    <label for="send-img-work" class="form-label fw-bold">
+                        Arraste ou selecione as imagens desejadas
+                    </label>
+                    <div
+                        class="border border-2 rounded-3 p-4 text-center bg-light"
+                        style="cursor: pointer"
+                        onclick="document.getElementById('send-img-work').click()"
+                    >
+                        <i class="bi bi-cloud-upload fs-1 text-primary"></i>
+                        <p class="mt-2 mb-0 text-secondary">
+                            Clique aqui ou arraste suas imagens
+                        </p>
+                    </div>
+                    <input
+                        type="file"
+                        class="form-control d-none"
+                        id="send-img-work"
+                        name="send-img"
+                        multiple
+                        accept="image/*"
+                    />
+                    <div id="preview-area" class="mt-3 d-flex flex-wrap gap-3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-10">
+                <div class="mb-3 text-center">
+                    <button
+                        type="button"
+                        id="update-work-button"
+                        class="btn btn-warning border"
+                    >
+                        Editar a Obra
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../js/pages/editWork.page.js"></script>
+</body>
+</html>

@@ -14,11 +14,11 @@ const pool = new Pool({
 });
 
 pool.on('connect', () =>{
-    console.log(`Banco de dados conectado!`);
+
 });
 
 pool.on('error', (err) =>{
-    console.log(`Erro ao se conectar ao banco de dados ${err}`);
+
 });
 
 export default pool;

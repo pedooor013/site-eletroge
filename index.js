@@ -10,11 +10,49 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// ✅ CORS SUPER PERMISSIVO
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: '*',
+    credentials: true
+}));
+
+// ✅ LOG COMPLETO DE REQUISIÇÕES E RESPOSTAS
+app.use((req, res, next) => {
+
+
+
+
+
+    
+    // ✅ LOG DA RESPOSTA
+    const originalSend = res.send;
+    const originalJson = res.json;
+    
+    res.send = function(data) {
+
+
+
+
+        originalSend.call(this, data);
+    };
+    
+    res.json = function(data) {
+
+
+
+
+        originalJson.call(this, data);
+    };
+    
+    next();
+});
 
 app.use(express.static("public"));
 
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use('/eletroge', admRoutes);
 app.use('/eletroge', obrasRoutes);
@@ -22,5 +60,5 @@ app.use('/eletroge', detalhesObrasRoutes);
 app.use('/eletroge', servicosObras);
 
 app.listen(PORT, () =>{
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-})
+
+});
