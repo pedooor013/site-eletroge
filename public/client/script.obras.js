@@ -4,7 +4,7 @@ const id = params.get("id");
 
 async function carregarDetalhes(id) {
     try{
-        const resposta = await fetch(`http://localhost:3000/eletroge/obras/detalhes/${id}`);
+        const resposta = await fetch(`/eletroge/obras/detalhes/${id}`);
 
         if(resposta.status === 200){
             const dados = await resposta.json();

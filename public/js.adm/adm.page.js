@@ -1,6 +1,6 @@
-const loginAPIRoute = "http://localhost:3000/eletroge/login";
-const createNewWorkAPIRoute = "http://localhost:3000/eletroge/cadastrarObra";
-const uploadImagesAPIRoute = "http://localhost:3000/eletroge/upload";
+const loginAPIRoute = "/eletroge/login";
+const createNewWorkAPIRoute = "/eletroge/cadastrarObra";
+const uploadImagesAPIRoute = "/eletroge/upload";
 let currentWorkImages = [];
 let deletedWorkImages = [];
 let workImages = [];
@@ -57,7 +57,7 @@ try {
 }
 async function loadWorksIntoSelect() {
 const select = document.getElementById("select-work-to-edit");
-const response = await fetch("http://localhost:3000/eletroge/obras");
+const response = await fetch("/eletroge/obras");
 const works = await response.json();
 works.forEach((work) => {
     const option = document.createElement("option");
@@ -82,7 +82,7 @@ let currentWorkId = null;
 async function loadWorkDetails(id) {
 currentWorkId = id;
 const response = await fetch(
-    `http://localhost:3000/eletroge/obras/detalhes/${id}`
+    `/eletroge/obras/detalhes/${id}`
 );
 
 if (response.status !== 200) {
@@ -165,7 +165,7 @@ if (Object.keys(updateBody).length === 0) {
 }
 try {
     const response = await fetch(
-    `http://localhost:3000/eletroge/editarObra/${workId}`,
+    `/eletroge/editarObra/${workId}`,
     {
         method: "PATCH",
         headers: {
@@ -227,7 +227,7 @@ selectedFiles.forEach((file, index) => {
 async function deleteWork(workId) {
 try {
     const response = await fetch(
-    `http://localhost:3000/eletroge/deletarObra/${workId}`,
+    `/eletroge/deletarObra/${workId}`,
     {
         method: "DELETE",
         headers: {

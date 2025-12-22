@@ -1,7 +1,7 @@
-const URLTodasObras = 'http://localhost:3000/eletroge/obras';
-const URLDetalheObra = 'http://localhost:3000/eletroge/obras/';
-const URLObrasFinalizadas = 'http://localhost:3000/eletroge/obras/finalizadas/';
-const URLObrasEmAndamento = 'http://localhost:3000/eletroge/obras/andamento ';
+const URLTodasObras = '/eletroge/obras';
+const URLDetalheObra = '/eletroge/obras/';
+const URLObrasFinalizadas = '/eletroge/obras/finalizadas/';
+const URLObrasEmAndamento = '/eletroge/obras/andamento ';
 
 function mostrarCards(obras){
     const container = document.getElementById('quadros-obras');
