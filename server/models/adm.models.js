@@ -19,6 +19,7 @@ async function findUserByEmailModels(email){
 
 async function createNewWorkModels({name, description, progress, arrServicesId, arrImage}){
     try{
+
         const result = await pool.query(`
             INSERT INTO obras(nome, descricao, progresso)
             VALUES($1, $2, $3)
@@ -27,10 +28,8 @@ async function createNewWorkModels({name, description, progress, arrServicesId, 
             const obraId = result.rows[0].id;
             
             await createRelationshipsWorkService(obraId, arrServicesId);
-            console.log('PASSEI PELO WORK E SERVICE')
             
             await createRelationshipsWorkImage(obraId, arrImage);
-            console.log('PASSEI PELO WORK E IMG')
 
             return obraId;
 
@@ -54,7 +53,14 @@ async function createRelationshipsWorkService(obraId, arrServicesId){
     
     async function createRelationshipsWorkImage(obraId, arrImage){
     try{
+        console.log("🖼️ createRelationshipsWorkImage chamada:");
+        console.log("obraId:", obraId);
+        console.log("arrImage:", arrImage);
+        console.log("arrImage é array?", Array.isArray(arrImage));
+        console.log("arrImage.length:", arrImage?.length);
         for(let countArrPosition = 0; countArrPosition < arrImage.length; countArrPosition++){
+            console.log(`Inserindo imagem ${countArrPosition}:`, arrImage[countArrPosition]);
+
             if(countArrPosition == 0){
                 await pool.query(`
                     INSERT INTO imagens(obra_id, url, eh_principal)
@@ -67,7 +73,12 @@ async function createRelationshipsWorkService(obraId, arrServicesId){
                     `, [obraId, arrImage[countArrPosition]]); 
             }
         }
+    console.log("✅ Todas as imagens inseridas com sucesso!");
+
     }catch(err){
+       // throw new Error("Erro ao criar um relacionamento entre a obra e as imagens!");
+        console.error("❌ Erro DETALHADO em createRelationshipsWorkImage:", err);
+        console.error("❌ Stack:", err.stack);
         throw new Error("Erro ao criar um relacionamento entre a obra e as imagens!");
     }
 }

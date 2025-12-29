@@ -82,14 +82,8 @@ async function handleCreateWork() {
             createButton.textContent = originalText;
             return;
         }
-
-
-
-
         // Faz upload das imagens
         const uploadedImages = await uploadImagesService(selectedFiles);
-
-
 
         // ✅ ATUALIZA TEXTO DO BOTÃO
         createButton.textContent = 'Cadastrando obra...';
@@ -102,9 +96,12 @@ async function handleCreateWork() {
             arrServicesId: idService,
             arrImage: uploadedImages
         };
-
-
-
+        
+        console.log("📦 DADOS COMPLETOS QUE SERÃO ENVIADOS:");
+        console.log("workData:", JSON.stringify(workData, null, 2));
+        console.log("Tipo de arrImage:", typeof workData.arrImage);
+        console.log("É array?", Array.isArray(workData.arrImage));
+        console.log("Conteúdo de arrImage:", workData.arrImage);
         // Cria a obra
         const result = await createWorkService(workData);
 
