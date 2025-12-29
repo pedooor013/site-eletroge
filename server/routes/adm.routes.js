@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/login", admController.loginAdmController);
 router.post("/cadastrarObra", admController.authMiddleware, admController.createNewWorkController);
-router.post("/upload", admController.authMiddleware, uploadImagesMiddleware, uploadImagesController);
+router.post("/upload", uploadImagesMiddleware, uploadImagesController);
 router.patch("/editarObra/:id", admController.authMiddleware, admController.updatedWorkController);
 router.delete("/deletarObra/:id", admController.authMiddleware, admController.deleteWorkController);
 
