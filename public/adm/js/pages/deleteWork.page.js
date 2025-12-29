@@ -54,6 +54,8 @@ function openDeleteModal() {
 async function handleDeleteWork() {
     const selectedId = document.getElementById("select-work-to-delete").value;
 
+    console.log({selectedId})
+
     if (!selectedId) {
         alert("Selecione uma obra para deletar!");
         return;
