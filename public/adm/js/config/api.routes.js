@@ -1,4 +1,4 @@
-const BASE_URL = `https://eletroge.onrender.com/eletroge`
+const BASE_URL = `/eletroge`
 
 export const API_ROUTES = {
     // Login
