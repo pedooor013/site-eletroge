@@ -6,7 +6,6 @@ function initLoginPage() {
     
     if (loginButton) {
         loginButton.addEventListener("click", handleLogin);
-        console.log("Fui Clicado!")
     }
 }
 
@@ -15,7 +14,6 @@ async function handleLogin() {
     const email = document.getElementById('email-input').value;
     const password = document.getElementById('password-input').value;
     const messageElement = document.getElementById('message');
-    console.log({email, password});
     
     // Limpa mensagens anteriores
     messageElement.innerHTML = "";
