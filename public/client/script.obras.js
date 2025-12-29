@@ -11,7 +11,6 @@ async function carregarDetalhes(id) {
             montarTela(dados[0]);
         }
     }catch(err){
-        console.error("Erro ao carregar os detalhes: ", err);
     }
 }
 

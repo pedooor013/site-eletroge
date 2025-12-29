@@ -52,13 +52,6 @@ async function createNewWorkController(req, res){
     try{
         const {name, description, progress, arrServicesId, arrImage} = req.body;
 
-        console.log("📥 DADOS RECEBIDOS NO BACKEND:");
-        console.log("Body completo:", JSON.stringify(req.body, null, 2));
-        console.log("name:", name, "| tipo:", typeof name);
-        console.log("description:", description, "| tipo:", typeof description);
-        console.log("progress:", progress, "| tipo:", typeof progress);
-        console.log("arrServicesId:", arrServicesId, "| é array?", Array.isArray(arrServicesId));
-        console.log("arrImage:", arrImage, "| é array?", Array.isArray(arrImage));
 
         const obraId = await admModels.createNewWorkModels({name, description, progress, arrServicesId, arrImage});
 
@@ -73,7 +66,6 @@ async function createNewWorkController(req, res){
             obraId: obraId
         })
     }catch(err){
-        console.error("Erro no Controller:", err);
 
         return res.status(500).json({
             error: "Erro interno ao criar obra.",

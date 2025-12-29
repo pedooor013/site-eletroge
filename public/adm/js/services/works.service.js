@@ -17,7 +17,6 @@ export async function getAllWorksService() {
 
         return result.data;
     } catch (err) {
-        console.error("Erro no serviço de obras:", err);
         throw err;
     }
 }
@@ -34,7 +33,6 @@ export async function getWorkDetailsService(workId) {
         // A API retorna um array, pegamos o primeiro item
         return result.data[0];
     } catch (err) {
-        console.error("Erro no serviço de detalhes da obra:", err);
         throw err;
     }
 }
@@ -59,7 +57,6 @@ export async function createWorkService(workData) {
             data: result
         };
     } catch (err) {
-        console.error("Erro ao criar obra:", err);
         throw err;
     }
 }
@@ -79,7 +76,6 @@ export async function updateWorkService(workId, updateData) {
             data: result
         };
     } catch (err) {
-        console.error("Erro ao atualizar obra:", err);
         throw err;
     }
 }
@@ -99,7 +95,6 @@ export async function deleteWorkService(workId) {
             data: result
         };
     } catch (err) {
-        console.error("Erro ao deletar obra:", err);
         throw err;
     }
 }

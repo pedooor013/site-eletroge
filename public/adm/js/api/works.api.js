@@ -13,7 +13,6 @@ export async function getAllWorksApi() {
             status: response.status
         };
     } catch (err) {
-        console.error("Erro ao buscar obras:", err);
         throw new Error('Erro ao buscar obras');
     }
 }
@@ -30,7 +29,6 @@ export async function getWorkDetailsApi(workId) {
             status: response.status
         };
     } catch (err) {
-        console.error("Erro ao buscar detalhes da obra:", err);
         throw new Error('Erro ao buscar detalhes da obra');
     }
 }
@@ -52,7 +50,6 @@ export async function createWorkApi(workData) {
             status: response.status
         };
     } catch (err) {
-        console.error("Erro ao criar obra:", err);
         throw new Error('Erro ao criar obra');
     }
 }
@@ -74,7 +71,6 @@ export async function updateWorkApi(workId, updateData) {
             status: response.status
         };
     } catch (err) {
-        console.error("Erro ao atualizar obra:", err);
         throw new Error('Erro ao atualizar obra');
     }
 }
@@ -102,7 +98,6 @@ export async function deleteWorkApi(workId) {
             status: response.status
         };
     } catch (err) {
-        console.error("Erro ao deletar obra:", err);
         throw new Error('Erro ao deletar obra');
     }
 }

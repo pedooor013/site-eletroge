@@ -15,7 +15,6 @@ export async function loginApi(email, password) {
             status: response.status
         };
     } catch (err) {
-        console.error("Erro na API de login:", err);
         throw new Error('Erro de conexão com o servidor');
     }
 }

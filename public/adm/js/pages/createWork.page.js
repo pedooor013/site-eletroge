@@ -97,11 +97,6 @@ async function handleCreateWork() {
             arrImage: uploadedImages
         };
         
-        console.log("📦 DADOS COMPLETOS QUE SERÃO ENVIADOS:");
-        console.log("workData:", JSON.stringify(workData, null, 2));
-        console.log("Tipo de arrImage:", typeof workData.arrImage);
-        console.log("É array?", Array.isArray(workData.arrImage));
-        console.log("Conteúdo de arrImage:", workData.arrImage);
         // Cria a obra
         const result = await createWorkService(workData);
 
@@ -115,9 +110,6 @@ async function handleCreateWork() {
         resetForm();
 
     } catch (err) {
-        console.error("❌ Erro ao cadastrar obra:", err);
-        console.error("❌ Mensagem:", err.message);
-        console.error("❌ Stack completo:", err.stack);
         
         // ✅ RESTAURA BOTÃO EM CASO DE ERRO
         const createButton = document.getElementById('create-work-button');

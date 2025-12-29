@@ -23,7 +23,6 @@ export const uploadImagesController = async (req, res) => {
     res.json({ arrImage: urls });
 
   } catch (err) {
-    console.error("Erro Cloudinary:", err);
     res.status(500).json({ error: "Erro ao enviar imagens" });
   }
 };

@@ -5,7 +5,6 @@ export async function loginService(email, password) {
     try {                   
         const result = await loginApi(email, password);
 
-        console.log({result});
         
         if (!result.ok) {
             throw new Error(result.message || "Erro ao realizar login");

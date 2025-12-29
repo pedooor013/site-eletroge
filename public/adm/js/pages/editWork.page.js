@@ -41,7 +41,6 @@ async function loadWorksIntoSelect() {
             select.appendChild(option);
         });
     } catch (err) {
-        console.error("Erro ao carregar obras:", err);
         alert("Erro ao carregar lista de obras");
     }
 }
@@ -74,7 +73,6 @@ async function loadWorkDetails(id) {
         renderWorkImages(work.imagens);
 
     } catch (err) {
-        console.error("Erro ao carregar detalhes:", err);
         alert("Erro ao carregar detalhes da obra");
     }
 }
@@ -185,7 +183,6 @@ async function handleUpdateWork() {
         location.reload();
 
     } catch (err) {
-        console.error("Erro ao atualizar obra:", err);
         alert(err.message || "Erro ao atualizar obra");
     }
 }

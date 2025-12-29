@@ -18,8 +18,6 @@ export async function uploadImagesService(files) {
 
         return imageUrls;
     } catch (err) {
-        console.error("❌ SERVICE: Erro no serviço de upload:", err);
-        console.error("❌ SERVICE: Mensagem completa:", err.message);
         throw err;
     }
 }

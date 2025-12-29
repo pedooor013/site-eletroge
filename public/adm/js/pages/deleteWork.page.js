@@ -31,7 +31,6 @@ async function loadWorksIntoSelect() {
             select.appendChild(option);
         });
     } catch (err) {
-        console.error("Erro ao carregar obras:", err);
         alert("Erro ao carregar lista de obras");
     }
 }
@@ -76,7 +75,6 @@ async function handleDeleteWork() {
         }, 1000);
 
     } catch (err) {
-        console.error("Erro ao deletar obra:", err);
         alert(err.message || "Erro ao deletar obra");
     }
 }

@@ -39,7 +39,6 @@ export async function uploadImagesApi(files) {
 
         // ✅ VERIFICA SE RETORNOU IMAGENS
         if (!data.arrImage || data.arrImage.length === 0) {
-            console.error("❌ API não retornou imagens!");
             throw new Error('API não processou as imagens');
         }
 
@@ -52,8 +51,6 @@ export async function uploadImagesApi(files) {
         if (err.name === 'AbortError') {
             throw new Error('Upload demorou muito tempo. Tente com imagens menores.');
         }
-        console.error("❌ Erro completo:", err);
-        console.error("❌ Mensagem:", err.message);
         throw new Error('Erro ao fazer upload das imagens');
     }
 }
