@@ -1,5 +1,5 @@
-import { loginApi } from '../api/login.api.js';
-import { saveToken } from '../utils/auth.utils.js';
+import { loginApi } from '/adm/js/api/login.api.js';
+import { saveToken } from '/adm/js/utils/auth.utils.js';
 
 export async function loginService(email, password) {
     try {

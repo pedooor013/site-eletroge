@@ -1,5 +1,5 @@
-import { API_ROUTES } from '../config/api.routes.js';
-import { getAuthHeaders } from '../utils/auth.utils.js';
+import { API_ROUTES } from '/adm/js/config/api.routes.js';
+import { getAuthHeaders } from '/adm/js/utils/auth.utils.js';
 
 // Listar todas as obras
 export async function getAllWorksApi() {

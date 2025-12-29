@@ -1,4 +1,4 @@
-import { getAllWorksService, deleteWorkService } from '../services/works.service.js';
+import { getAllWorksService, deleteWorkService } from '/adm/js/services/works.service.js';
 
 let modalInstance = null;
 

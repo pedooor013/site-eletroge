@@ -1,4 +1,4 @@
-import { API_ROUTES } from '../config/api.routes.js';
+import { API_ROUTES } from '/adm/js/config/api.routes.js';
 
 export async function uploadImagesApi(files) {
     try {

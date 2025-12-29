@@ -1,6 +1,6 @@
-import { getAllWorksService, getWorkDetailsService, updateWorkService } from '../services/works.service.js';
-import { uploadImagesService } from '../services/images.service.js';
-import { createExistingImagePreview, clearPreviewArea, createImagePreview } from '../utils/image.utils.js';
+import { getAllWorksService, getWorkDetailsService, updateWorkService } from '/adm/js/services/works.service.js';
+import { uploadImagesService } from '/adm/js/services/images.service.js';
+import { createExistingImagePreview, clearPreviewArea, createImagePreview } from '/adm/js/utils/image.utils.js';
 
 let currentWorkId = null;
 let currentWorkImages = [];

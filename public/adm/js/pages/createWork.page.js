@@ -1,6 +1,6 @@
-import { createWorkService } from '../services/works.service.js';
-import { uploadImagesService } from '../services/images.service.js';
-import { validateImageCount, clearPreviewArea, createImagePreview } from '../utils/image.utils.js';
+import { createWorkService } from '/adm/js/services/works.service.js';
+import { uploadImagesService } from '/adm/js/services/images.service.js';
+import { validateImageCount, clearPreviewArea, createImagePreview } from '/adm/js/utils/image.utils.js';
 
 let selectedFiles = [];
 

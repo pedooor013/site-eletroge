@@ -4,7 +4,7 @@ import {
     createWorkApi, 
     updateWorkApi,
     deleteWorkApi 
-} from '../api/works.api.js';
+} from '/adm/js/api/works.api.js';
 
 // Listar todas as obras
 export async function getAllWorksService() {

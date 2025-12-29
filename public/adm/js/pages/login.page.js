@@ -1,4 +1,4 @@
-import { loginService } from '../services/login.services.js';
+import { loginService } from '/adm/js/services/login.services.js';
 
 // Inicialização da página de login
 function initLoginPage() {
@@ -6,6 +6,7 @@ function initLoginPage() {
     
     if (loginButton) {
         loginButton.addEventListener("click", handleLogin);
+        console.log("Fui Clicado!")
     }
 }
 

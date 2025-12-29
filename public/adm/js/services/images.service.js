@@ -1,4 +1,4 @@
-import { uploadImagesApi } from '../api/images.api.js';
+import { uploadImagesApi } from '/adm/js/api/images.api.js';
 
 export async function uploadImagesService(files) {
     try {
