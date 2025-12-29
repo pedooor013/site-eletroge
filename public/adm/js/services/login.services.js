@@ -2,7 +2,7 @@ import { loginApi } from '/adm/js/api/login.api.js';
 import { saveToken } from '/adm/js/utils/auth.utils.js';
 
 export async function loginService(email, password) {
-    try {
+    try {                   
         const result = await loginApi(email, password);
 
         if (!result.ok) {
