@@ -1,78 +1,94 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-
 async function carregarDetalhes(id) {
-    try{
+    try {
         const resposta = await fetch(`/eletroge/obras/detalhes/${id}`);
 
-        if(resposta.status === 200){
+        if (resposta.status === 200) {
             const dados = await resposta.json();
+            console.log('Dados recebidos:', dados); // para debug
             montarTela(dados[0]);
+        } else {
+            console.error('Erro na resposta:', resposta.status);
         }
-    }catch(err){
+    } catch (err) {
+        console.error('Erro ao carregar detalhes:', err);
     }
 }
 
 function montarTela(dados) {
     const detalhes = document.getElementById('section-obras');
 
+    if (!detalhes) {
+        console.error('Elemento section-obras não encontrado');
+        return;
+    }
+
+    // Validar dados
+    if (!dados) {
+        console.error('Dados não recebidos');
+        return;
+    }
+
     // --- CORRIGIR FORMATO DAS IMAGENS ---
-    dados.imagens = dados.imagens.map(img => {
+    const imagens = dados.imagens || [];
+    const imagensProcessadas = imagens.map(img => {
         try {
-            return JSON.parse(img).url; // pega a URL de dentro do JSON string
+            return JSON.parse(img).url;
         } catch {
-            return img.url ? img.url : img; // fallback
+            return img.url ? img.url : img;
         }
     });
 
     // imagem principal
-    const imagemPrincipal = dados.imagens.length > 0 ? dados.imagens[0] : "";
+    const imagemPrincipal = imagensProcessadas.length > 0 ? imagensProcessadas[0] : "";
 
     // montar thumbnails
     let thumbnailsHTML = "";
-    dados.imagens.forEach((img, i) => {
+    imagensProcessadas.forEach((img, i) => {
         if (i !== 0) {
-            thumbnailsHTML += `<img src="${img}" id="thumbnail-images-obras">`;
+            thumbnailsHTML += `<img src="${img}" class="thumbnail-img-obras">`;
         }
     });
 
     // montar serviços
     let servicosHTML = "";
-    dados.servicos.forEach(serv => {
-        servicosHTML += `<ol>${serv.nome} ${serv.descricao}</ol>`;
+    const servicos = dados.servicos || [];
+    servicos.forEach(serv => {
+        servicosHTML += `<li>${serv.nome} ${serv.descricao}</li>`;
     });
 
     detalhes.innerHTML = `
-        <h2 id="h2-nome-obra">${dados.nome}</h2>
+        <h2 id="h2-nome-obra">${dados.nome || 'Sem título'}</h2>
         <hr />  
         <div id="content-obras">
-            <div id="images-obras">
+            <div id="images-obras-container">
 
                 <div id="thumbnail-images-obras">
                     ${thumbnailsHTML}
                 </div>
                 
-                <div id="main-image-obras">
-                    <img src="${imagemPrincipal}" id="main-image-obras">
+                <div id="main-image-container">
+                    <img src="${imagemPrincipal}" class="main-image-obras">
                 </div>
 
             </div>
 
             <div id="description-obras">
-                <progress value="${dados.progresso}" max="100"></progress>
+                <progress value="${dados.progresso || 0}" max="100"></progress>
                 <div id="tag-obras">
                     <ul>${servicosHTML}</ul>
                 </div>
-                <p id="span-description-obras">${dados.descricao}</p>
+                <p id="span-description-obras">${dados.descricao || ''}</p>
             </div>
 
         </div>
     `;
 
     // troca de miniatura pela principal
-    const thumbnails = document.querySelectorAll("#thumbnail-images-obras img");
-    const mainImage = document.querySelector("#main-image-obras img");
+    const thumbnails = document.querySelectorAll(".thumbnail-img-obras");
+    const mainImage = document.querySelector(".main-image-obras");
 
     thumbnails.forEach((thumb) => {
         thumb.addEventListener("click", () => {
@@ -82,8 +98,5 @@ function montarTela(dados) {
         });
     });
 }
-
-
-
 
 carregarDetalhes(id);

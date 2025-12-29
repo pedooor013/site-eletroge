@@ -24,7 +24,6 @@ export async function exibirDadosObraController(req, res){
         return res.json(detalhesObras);
 
     } catch(err) {
-
         return res.status(500).json({err: "Erro ao buscar os detalhes das obras"});
     }
 }
