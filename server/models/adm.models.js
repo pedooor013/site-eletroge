@@ -17,27 +17,61 @@ async function findUserByEmailModels(email){
     })
 }
 
+// async function createNewWorkModels({name, description, progress, arrServicesId, arrImage}){
+//     try{
+
+//         const result = await pool.query(`
+//             INSERT INTO obras(nome, descricao, progresso)
+//             VALUES($1, $2, $3)
+//             RETURNING id;
+//             `, [name, description, progress]);
+//             const obraId = result.rows[0].id;
+            
+//             await createRelationshipsWorkService(obraId, arrServicesId);
+            
+//             await createRelationshipsWorkImage(obraId, arrImage);
+
+//             return obraId;
+
+//         }catch(err){
+//             throw new Error("Erro ao cadastrar a obra!");
+//         }
+// };
+
 async function createNewWorkModels({name, description, progress, arrServicesId, arrImage}){
     try{
-
+        console.log("🏗️ Criando obra no banco...");
+        console.log("Dados:", { name, description, progress });
+        
         const result = await pool.query(`
             INSERT INTO obras(nome, descricao, progresso)
             VALUES($1, $2, $3)
             RETURNING id;
             `, [name, description, progress]);
-            const obraId = result.rows[0].id;
             
-            await createRelationshipsWorkService(obraId, arrServicesId);
-            
-            await createRelationshipsWorkImage(obraId, arrImage);
+        const obraId = result.rows[0].id;
+        console.log("✅ Obra criada com ID:", obraId);
+        
+        console.log("🔧 Criando relacionamentos com serviços...");
+        await createRelationshipsWorkService(obraId, arrServicesId);
+        console.log("✅ Relacionamentos com serviços criados!");
 
-            return obraId;
+        console.log("🖼️ Criando relacionamentos com imagens...");
+        await createRelationshipsWorkImage(obraId, arrImage);
+        console.log("✅ Relacionamentos com imagens criados!");
 
-        }catch(err){
-            throw new Error("Erro ao cadastrar a obra!");
-        }
-};
+        return obraId;
 
+    }catch(err){
+        // ✅ MOSTRAR O ERRO REAL:
+        console.error("❌❌❌ ERRO REAL DO BANCO:", err);
+        console.error("❌ Mensagem:", err.message);
+        console.error("❌ Code:", err.code);
+        console.error("❌ Detail:", err.detail);
+        console.error("❌ Stack completo:", err.stack);
+        throw err; // ← JOGUE O ERRO ORIGINAL, NÃO UM GENÉRICO!
+    }
+}
 async function createRelationshipsWorkService(obraId, arrServicesId){
     try{
         for(let countArrPosition = 0; countArrPosition < arrServicesId.length; countArrPosition++){
