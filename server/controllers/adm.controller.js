@@ -18,7 +18,7 @@ async function loginAdmController(req, res){
 async function generateJWT(id){
     return jwt.sign({id},
         process.env.SECRET_JWT, 
-        {expiresIn: 0});
+        {expiresIn: 86400});
 }
 
 async function authMiddleware(req, res, next){
