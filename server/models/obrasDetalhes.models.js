@@ -2,7 +2,7 @@ import pool from '../db.js';
 
 export async function exibirDadosObraModels(id){
     
-    const detalhesObras = await pool(`
+    const detalhesObras = await pool.query(`
     SELECT 
     o.id,
     o.nome,

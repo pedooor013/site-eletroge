@@ -1,7 +1,11 @@
-import postgres from 'postgres'
-import dotenv from 'dotenv';
+import pkg from 'pg';
+const { Pool } = pkg;
 
-const connectionString = process.env.DATABASE_URL
-const pool = postgres(connectionString)
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 
 export default pool;

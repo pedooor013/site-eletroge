@@ -2,7 +2,7 @@ import pool from '../db.js';
 
 async function findUserByEmailModels(email){
     return new Promise((res, rej) =>{
-        pool(`
+        pool.query(`
                 SELECT id, username, email, password
                 FROM users
                 WHERE email = $1
@@ -19,7 +19,7 @@ async function findUserByEmailModels(email){
 
 async function createNewWorkModels({name, description, progress, arrServicesId, arrImage}){
     try{
-        const result = await pool(`
+        const result = await pool.query(`
             INSERT INTO obras(nome, descricao, progresso)
             VALUES($1, $2, $3)
             RETURNING id;
@@ -40,7 +40,7 @@ async function createNewWorkModels({name, description, progress, arrServicesId, 
 async function createRelationshipsWorkService(obraId, arrServicesId){
     try{
         for(let countArrPosition = 0; countArrPosition < arrServicesId.length; countArrPosition++){
-            await pool(`
+            await pool.query(`
                 INSERT INTO obra_servico(obra_id, servico_id)
                 VALUES($1, $2)
                 `, [obraId, arrServicesId[countArrPosition]]); 
@@ -55,13 +55,13 @@ async function createRelationshipsWorkImage(obraId, arrImage){
     for(let countArrPosition = 0; countArrPosition < arrImage.length; countArrPosition++){
     
         if(countArrPosition == 0){
-            await pool(`
+            await pool.query(`
                 INSERT INTO imagens(obra_id, url, eh_principal)
                 VALUES($1, $2, true)
                 `, [obraId, arrImage[countArrPosition]]); 
         }
         else{
-            await pool(`
+            await pool.query(`
                 INSERT INTO imagens(obra_id, url)
                 VALUES($1, $2)
                 `, [obraId, arrImage[countArrPosition]]); 
@@ -102,7 +102,7 @@ async function updatedWorkFieds(updatedWork, workId) {
     query += sets.join(', ') + ` WHERE id = $${index}`;
     values.push(workId);
 
-    await pool(query, values);
+    await pool.query(query, values);
 
     return { query, values };
 }
@@ -112,7 +112,7 @@ async function updatedWorkImages(updatedWork, workId) {
         return { query: null, values: [] };
     }
 
-    await pool(`DELETE FROM imagens WHERE obra_id = $1`, [workId]);
+    await pool.query(`DELETE FROM imagens WHERE obra_id = $1`, [workId]);
     await createRelationshipsWorkImage(workId, updatedWork.arrImage);
 
     return { 
@@ -126,7 +126,7 @@ async function updatedWorkServices(updatedWork, workId) {
         return { query: null, values: [] };
     }
 
-    await pool(`DELETE FROM obra_servico WHERE obra_id = $1`, [workId]);
+    await pool.query(`DELETE FROM obra_servico WHERE obra_id = $1`, [workId]);
     await createRelationshipsWorkService(workId, updatedWork.arrServicesId);
 
     return { 
@@ -148,7 +148,7 @@ async function updatedWorkModels(updatedWork, workId) {
 }
 async function deleteWorkModel(workId){
     return new Promise((res, rej) =>{
-        pool(`
+        pool.query(`
             DELETE FROM obras WHERE id = $1
             `, [workId], function(err){
                 if(err){
