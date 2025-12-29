@@ -23,3 +23,10 @@ export function getAuthHeaders() {
         'Authorization': `Bearer ${token}`
     };
 }
+export function requireAuth() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        window.location.href = '/adm/views/login.page.html';
+    }
+}

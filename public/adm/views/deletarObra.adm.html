@@ -99,5 +99,9 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="/adm/js/pages/deleteWork.page.js"></script>
+    <script type="module">
+            import { requireAuth } from '/adm/js/utils/auth.utils.js';
+            requireAuth();
+        </script>
 </body>
 </html>

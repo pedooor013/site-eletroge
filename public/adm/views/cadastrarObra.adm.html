@@ -223,5 +223,9 @@
         </div>
         </div>
         <script type="module" src="/adm/js/pages/createWork.page.js"></script>
+        <script type="module">
+            import { requireAuth } from '/adm/js/utils/auth.utils.js';
+            requireAuth();
+        </script>
     </body>
     </html>

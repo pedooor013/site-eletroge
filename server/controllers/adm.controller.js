@@ -18,7 +18,25 @@ async function loginAdmController(req, res){
 async function generateJWT(id){
     return jwt.sign({id},
         process.env.SECRET_JWT, 
-        {expiresIn: 86400});
+        {expiresIn: 0});
+}
+
+async function authMiddleware(req, res, next){
+    const authHeader = req.headers.authorization;
+
+    if(!authHeader){
+        res.status(401).json({error: 'Token não encontrado!'});
+    }
+
+    const token = authHeader.split(' ')[1];
+
+    try{
+        const decoded = jwt.verify(token, process.env.SECRET_JWT);
+        req.user = decoded;
+        next();
+    }catch{
+        res.status(401).json({error: 'Token inválido'});
+    }
 }
 
 async function authLoginController(email, password){
@@ -83,5 +101,6 @@ export default{
     loginAdmController,
     createNewWorkController,
     updatedWorkController,
-    deleteWorkController
+    deleteWorkController,
+    authMiddleware
 }
