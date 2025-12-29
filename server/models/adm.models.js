@@ -3,7 +3,7 @@ import pool from '../db.js';
 async function findUserByEmailModels(email){
     return new Promise((res, rej) =>{
         pool.query(`
-                SELECT id, username, email, password
+                SELECT id, email, password
                 FROM users
                 WHERE email = $1
             `, [email],
