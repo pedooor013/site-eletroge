@@ -27,8 +27,10 @@ async function createNewWorkModels({name, description, progress, arrServicesId, 
             const obraId = result.rows[0].id;
             
             await createRelationshipsWorkService(obraId, arrServicesId);
-
+            console.log('PASSEI PELO WORK E SERVICE')
+            
             await createRelationshipsWorkImage(obraId, arrImage);
+            console.log('PASSEI PELO WORK E IMG')
 
             return obraId;
 
