@@ -80,9 +80,7 @@ export async function deleteWorkApi(workId) {
     try {
         const response = await fetch(API_ROUTES.DELETE_WORK(workId), {
             method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
+            headers: getAuthHeaders()
         });
 
         let data;
