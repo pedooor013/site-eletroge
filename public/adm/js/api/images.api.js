@@ -11,12 +11,6 @@ export async function uploadImagesApi(files) {
             formData.append("imagens", file);
         }
 
-        // Verifica o que foi adicionado no FormData
-
-        for (let pair of formData.entries()) {
-
-        }
-
         const url = API_ROUTES.UPLOAD_IMAGES;
 
         // ✅ CRIA UM ABORTCONTROLLER COM TIMEOUT MAIOR

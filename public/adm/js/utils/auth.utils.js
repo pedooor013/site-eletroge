@@ -18,11 +18,19 @@ export function isAuthenticated() {
 
 export function getAuthHeaders() {
     const token = getToken();
-    return {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+
+    const headers = {
+        'Content-Type': 'application/json'
     };
+
+    if (token) {
+        headers.Authorization = `Bearer ${token}`;
+    }
+
+    return headers;
 }
+
+
 export function requireAuth() {
     const token = localStorage.getItem('token');
 
