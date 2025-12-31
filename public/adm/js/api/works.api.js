@@ -38,7 +38,6 @@ export async function createWorkApi(workData) {
     try {
         const response = await fetch(API_ROUTES.CREATE_WORK, {
             method: "POST",
-            headers: getAuthHeaders(),
             body: JSON.stringify(workData)
         });
 
@@ -59,7 +58,6 @@ export async function updateWorkApi(workId, updateData) {
     try {
         const response = await fetch(API_ROUTES.UPDATE_WORK(workId), {
             method: "PATCH",
-            headers: getAuthHeaders(),
             body: JSON.stringify(updateData)
         });
 
