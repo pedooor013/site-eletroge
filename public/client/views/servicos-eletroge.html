@@ -1,243 +1,89 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>
-        Serviços | Grupo EletroGe - Instalações Elétricas em Londrina
-      </title>
-      <meta
-        name="description"
-        content="Conheça os serviços do Grupo Eletroge: instalações elétricas, manutenção e inovação em Londrina - PR."
-      />
-      <meta
-        name="keywords"
-        content="Eletroge, Grupo Eletroge, serviços elétricos, energia solar, automação, instalações elétricas Londrina"
-      />
-      <meta name="author" content="Grupo EletroGe" />
-      <meta name="robots" content="index, follow" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta property="og:title" content="Serviços | Grupo EletroGe" />
-      <meta
-        property="og:description"
-        content="Instalações elétricas, energia solar e automação residencial e comercial em Londrina - PR."
-      />
-      <meta
-        property="og:image"
-        content="https://eletroge.onrender.com/client/img/logo-eletroge.png"
-      />
-      <meta
-        property="og:url"
-        content="https://eletroge.onrender.com/client/views/servicos-eletroge.html"
-      />
-      <meta property="og:type" content="website" />
-      <link rel="stylesheet" href="/client/style.css" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-      />
-    </head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serviços | Grupo EletroGe - Instalações Elétricas em Londrina</title>
+    <meta name="description" content="Conheça os serviços do Grupo Eletroge: instalações elétricas, manutenção e inovação em Londrina - PR." />
+    <meta name="keywords" content="Eletroge, Grupo Eletroge, serviços elétricos, energia solar, automação, instalações elétricas Londrina" />
+    <meta name="author" content="Grupo EletroGe" />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:title" content="Serviços | Grupo EletroGe" />
+    <meta property="og:description" content="Instalações elétricas, energia solar e automação residencial e comercial em Londrina - PR." />
+    <meta property="og:image" content="https://eletroge.onrender.com/client/img/logo-eletroge.png" />
+    <meta property="og:url" content="https://eletroge.onrender.com/client/views/servicos-eletroge.html" />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="/client/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
     <style>
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: linear-gradient(to right, #ffffff, #ff9900);
-        padding: 15px 30px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      header .logo {
-        height: 60px;
-        cursor: pointer;
-      }
-
-      nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        transition: color 0.3s;
-      }
-
-      nav a:hover {
-        color: #333;
-      }
-
-      .banner-principal {
-        position: relative;
-        width: 100%;
-      }
-
-      .img-principal {
-        width: 100%;
-        max-height: 400px;
-        object-fit: cover;
-      }
-
-      .quadros-wrapper {
-        width: 100%;
-        padding: 40px 0;
-      }
-
-      .quadros {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .quadro {
-        position: relative;
-        width: 350px;
-        height: 450px;
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.2rem;
-        font-weight: bold;
-        overflow: hidden;
-        transition: all 0.4s ease-in-out;
-      }
-
-      .quadro::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-color: rgba(204, 153, 8, 0);
-        transition: background-color 0.4s ease-in-out;
-        z-index: 1;
-      }
-
-      .quadro:hover::before {
-        background-color: rgba(204, 153, 8, 0.7);
-      }
-
-      .quadro h2 {
-        position: relative;
-        z-index: 2;
-        transition: color 0.4s ease-in-out;
-      }
-
-      .quadro:hover h2 {
-        color: white;
-      }
-
-      .quadro-banner {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        color: white;
-        padding: 8px 0;
-        text-align: center;
-        transition: all 0.4s ease;
-        z-index: 2;
-      }
-
-      .quadro:hover .quadro-banner {
-        color: white;
-        background-color: transparent;
-        transform: translateY(140%);
-      }
-
-      .img-eletroge-rodape {
-        height: 50px;
-      }
+      body { margin: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+      header { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to right, #ffffff, #ff9900); padding: 15px 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+      header .logo { height: 60px; cursor: pointer; }
+      nav a { margin: 0 15px; text-decoration: none; color: white; font-weight: bold; transition: color 0.3s; }
+      nav a:hover { color: #333; }
+      .banner-principal { position: relative; width: 100%; }
+      .img-principal { width: 100%; max-height: 400px; object-fit: cover; }
+      .quadros-wrapper { width: 100%; padding: 40px 0; }
+      .quadros { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+      .quadro { position: relative; width: 350px; height: 450px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: bold; overflow: hidden; transition: all 0.4s ease-in-out; }
+      .quadro::before { content: ""; position: absolute; inset: 0; background-color: rgba(204,153,8,0); transition: background-color 0.4s ease-in-out; z-index: 1; }
+      .quadro:hover::before { background-color: rgba(204,153,8,0.7); }
+      .quadro h2 { position: relative; z-index: 2; transition: color 0.4s ease-in-out; }
+      .quadro:hover h2 { color: white; }
+      .quadro-banner { position: absolute; bottom: 0; left: 0; width: 100%; color: white; padding: 8px 0; text-align: center; transition: all 0.4s ease; z-index: 2; }
+      .quadro:hover .quadro-banner { color: white; background-color: transparent; transform: translateY(140%); }
+      .img-eletroge-rodape { height: 50px; }
     </style>
   </head>
   <body>
     <header>
-      <a href="index.html">>
-        <img
-          src="/client/img/logo-eletroge.png"
-          alt="Logo EletroGe"
-          class="logo"
-        />
+      <a href="/index.html">
+        <img src="/client/img/logo-eletroge.png" alt="Logo EletroGe" class="logo" />
       </a>
       <nav>
-        <a href="index.html">
-          ><i class="fas fa-home"></i> Início</a
-        >
-        <a href="/client/views/servicos-eletroge.html"
-          ><i class="fas fa-tools"></i> Serviços</a
-        >
-        <a href="/client/views/contato-eletroge.html"
-          ><i class="fas fa-envelope"></i> Contato</a
-        >
+        <a href="/index.html"><i class="fas fa-home"></i> Início</a>
+        <a href="/client/views/servicos-eletroge.html"><i class="fas fa-tools"></i> Serviços</a>
+        <a href="/client/views/contato-eletroge.html"><i class="fas fa-envelope"></i> Contato</a>
       </nav>
     </header>
 
     <section class="banner-principal">
-      <img
-        src="/client/img/img-principal.jpg"
-        alt="Imagem Principal"
-        class="img-principal"
-      />
+      <img src="/client/img/img-principal.jpg" alt="Imagem Principal" class="img-principal" />
     </section>
 
     <section class="quadros-wrapper">
       <h2 class="titulo-quadro">Nossos Principais Serviços</h2>
       <hr width="60%" />
       <div class="quadros">
-        <div
-          class="quadro"
-          style="
-            background-image: url(&quot;../img/instalacao-alta-tensao.jpg&quot;);
-          "
-        >
+        <div class="quadro" style="background-image: url('/client/img/instalacao-alta-tensao.jpg')">
           <h3>Alta Tensão</h3>
           <div class="quadro-banner">Confiabilidade e segurança</div>
         </div>
-        <div
-          class="quadro"
-          style="
-            background-image: url(&quot;../img/coca-cola-img-industrial.jpg&quot;);
-          "
-        >
+        <div class="quadro" style="background-image: url('/client/img/coca-cola-img-industrial.jpg')">
           <h3>Serviços Industriais</h3>
-          <div class="quadro-banner">
-            A segurança que a sua industria precisa
-          </div>
+          <div class="quadro-banner">A segurança que a sua indústria precisa</div>
         </div>
-        <div
-          class="quadro"
-          style="background-image: url(&quot;../img/instalcao-spda.jpeg&quot;)"
-        >
+        <div class="quadro" style="background-image: url('/client/img/instalcao-spda.jpeg')">
           <h3>SPDA</h3>
           <div class="quadro-banner">Segurança para edificações e vidas</div>
         </div>
         <div class="btn-wrapper-quadros">
           <a href="/client/views/obras-model.html">
-            <button class="botao-andamento" style="width: 500px">
-              Veja Nossas Obras Realizadas
-            </button>
+            <button class="botao-andamento" style="width: 500px">Veja Nossas Obras Realizadas</button>
           </a>
         </div>
       </div>
     </section>
+
     <div class="nav-mobile">
       <nav>
-        <a href="/client/views/obras-model.html"
-          ><i class="fas fa-tools"></i
-        ></a>
-        <a href="index.html">><i class="fas fa-home"></i></a>
-        <a href="/client/views/contato-eletroge.html"
-          ><i class="fas fa-envelope"></i
-        ></a>
+        <a href="/client/views/obras-model.html"><i class="fas fa-tools"></i></a>
+        <a href="/index.html"><i class="fas fa-home"></i></a>
+        <a href="/client/views/contato-eletroge.html"><i class="fas fa-envelope"></i></a>
       </nav>
     </div>
+
     <footer>
       <div class="footer-section footer-yellow-light">
         <div>Email: eletroge@eletroge.com.br</div>
@@ -249,11 +95,7 @@
         <strong>Entre em contato conosco!</strong>
       </div>
       <div class="footer-section footer-white">
-        <img
-          src="/client/img/logo-eletroge.png"
-          alt="Logo EletroGe"
-          class="img-eletroge-rodape"
-        />
+        <img src="/client/img/logo-eletroge.png" alt="Logo EletroGe" class="img-eletroge-rodape" />
       </div>
     </footer>
     <script src="/client/script.js"></script>
